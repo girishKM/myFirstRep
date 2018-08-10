@@ -80,6 +80,8 @@
    <hash n="oracle.ide.model.TechnologyScopeConfiguration">
       <list n="technologyScope">
          <string v="SOA"/>
+         <string v="XML"/>
+         <string v="XML_SCHEMA"/>
       </list>
    </hash>
    <hash n="oracle.jdeveloper.compiler.OjcConfiguration">
@@ -102,6 +104,18 @@
          <string v=".xml"/>
          <string v=".xsd"/>
          <string v=".xsl"/>
+         <string v=".exm"/>
+         <string v=".xml"/>
+         <string v=".exm"/>
+         <string v=".xml"/>
+         <string v=".exm"/>
+         <string v=".xml"/>
+         <string v=".exm"/>
+         <string v=".xml"/>
+         <string v=".exm"/>
+         <string v=".xml"/>
+         <string v=".exm"/>
+         <string v=".xml"/>
          <string v=".exm"/>
          <string v=".xml"/>
          <string v=".exm"/>
@@ -232,7 +246,7 @@
             <value n="custom" v="false"/>
             <value n="name" v="Default"/>
             <hash n="oracle.jdevimpl.runner.debug.DebugConfiguration">
-               <value n="remoteParameter:SOA:hostname" v="TH1388.thbs.india.com"/>
+               <value n="remoteParameter:SOA:hostname" v="TH1883.thbs.india.com"/>
                <value n="remoteParameter:SOA:port" v="5004"/>
                <value n="remoteProtocol" v="SOA"/>
             </hash>
@@ -305,4 +319,5 @@
          </list>
       </hash>
    </hash>
+   <value n="SCA_BPEL_FOLDER_PROPERTY_NAME" v="BPEL/"/>
 </jpr:project>
