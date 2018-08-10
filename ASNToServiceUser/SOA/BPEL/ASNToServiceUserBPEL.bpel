@@ -1,0 +1,215 @@
+<?xml version = "1.0" encoding = "UTF-8" ?>
+<!--
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  Oracle JDeveloper BPEL Designer 
+  
+  Created: Thu Jul 05 16:10:39 IST 2018
+  Author:  harshal_kulkarni
+  Purpose: Synchronous BPEL Process
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+-->
+<process name="ASNToServiceUserBPEL"
+         targetNamespace="http://xmlns.thbs.com/ASNtoServiceUser/ASNToServiceUser/ASNToServiceUserBPEL"
+         xmlns="http://docs.oasis-open.org/wsbpel/2.0/process/executable"
+         xmlns:client="http://xmlns.thbs.com/ASNtoServiceUser/ASNToServiceUser/ASNToServiceUserBPEL"
+         xmlns:ora="http://schemas.oracle.com/xpath/extension" xmlns:bpelx="http://schemas.oracle.com/bpel/extension"
+         xmlns:ns1="http://xmlns.oracle.com/pcbpel/adapter/file/ASNtoServiceUser/ASNToServiceUser/ReadASNFromWMS"
+         xmlns:bpel="http://docs.oasis-open.org/wsbpel/2.0/process/executable"
+         xmlns:ui="http://xmlns.oracle.com/soa/designer"
+         xmlns:ns2="http://www.thbs.com/ASNToServiceUser/XMLSchema/CompositeVariables"
+         xmlns:oraext="http://www.oracle.com/XSL/Transform/java/oracle.tip.pc.services.functions.ExtFunc"
+         xmlns:bpm="http://xmlns.oracle.com/bpmn20/extensions"
+         xmlns:xp20="http://www.oracle.com/XSL/Transform/java/oracle.tip.pc.services.functions.Xpath20"
+         xmlns:ess="http://xmlns.oracle.com/scheduler" xmlns:hwf="http://xmlns.oracle.com/bpel/workflow/xpath"
+         xmlns:xref="http://www.oracle.com/XSL/Transform/java/oracle.tip.xref.xpath.XRefXPathFunctions"
+         xmlns:dvm="http://www.oracle.com/XSL/Transform/java/oracle.tip.dvm.LookupValue"
+         xmlns:bpws="http://schemas.xmlsoap.org/ws/2003/03/business-process/"
+         xmlns:xdk="http://schemas.oracle.com/bpel/extension/xpath/function/xdk"
+         xmlns:ids="http://xmlns.oracle.com/bpel/services/IdentityService/xpath"
+         xmlns:ldap="http://schemas.oracle.com/xpath/extension/ldap" xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+         xmlns:ns27="urn:rosettanet:specification:domain:Logistics:TrackingReferenceType:xsd:codelist:01.06"
+         xmlns:ns3="urn:rosettanet:specification:interchange:AdvanceShipmentNotification:xsd:schema:02.06"
+         xmlns:ns5="urn:rosettanet:specification:universal:ContactInformation:xsd:schema:01.04"
+         xmlns:ns29="urn:rosettanet:specification:system:StandardDocumentHeader:xsd:schema:01.24"
+         xmlns:ns11="urn:rosettanet:specification:universal:Currency:xsd:codelist:01.03"
+         xmlns:ns19="urn:rosettanet:specification:universal:Document:xsd:schema:01.12"
+         xmlns:ns18="urn:rosettanet:specification:domain:Shared:PackageType:xsd:codelist:01.01"
+         xmlns:ns9="urn:rosettanet:specification:universal:CountrySubdivision:xsd:codelist:01.02"
+         xmlns:ns24="urn:rosettanet:specification:universal:ProductIdentification:xsd:schema:01.04"
+         xmlns:ns13="urn:rosettanet:specification:domain:Logistics:ShipmentChangeDisposition:xsd:codelist:01.03"
+         xmlns:ns15="urn:rosettanet:specification:domain:Logistics:ShipDateCode:xsd:codelist:01.03"
+         xmlns:ns20="urn:rosettanet:specification:universal:DocumentType:xsd:codelist:01.13"
+         xmlns:ns28="urn:rosettanet:specification:domain:Shared:ShippingServiceLevel:xsd:codelist:01.01"
+         xmlns:ns21="urn:rosettanet:specification:domain:Procurement:xsd:schema:02.30"
+         xmlns:ns23="urn:rosettanet:specification:domain:Logistics:NationalExportControlClassification:xsd:codelist:01.03"
+         xmlns:ns6="urn:rosettanet:specification:universal:Locations:xsd:schema:01.04"
+         xmlns:ns14="urn:rosettanet:specification:domain:Logistics:xsd:schema:02.23"
+         xmlns:ns17="urn:rosettanet:specification:universal:PhysicalDimension:xsd:schema:01.07"
+         xmlns:ns16="urn:rosettanet:specification:domain:Logistics:ShipmentMode:xsd:codelist:01.05"
+         xmlns:ns8="urn:rosettanet:specification:universal:Country:xsd:codelist:01.02"
+         xmlns:ns10="urn:rosettanet:specification:universal:MonetaryExpression:xsd:schema:01.07"
+         xmlns:ns7="urn:rosettanet:specification:universal:DataType:xsd:schema:01.04"
+         xmlns:ns22="urn:rosettanet:specification:domain:Manufacturing:xsd:schema:02.28"
+         xmlns:ns12="urn:rosettanet:specification:domain:Logistics:Incoterms:xsd:codelist:01.03"
+         xmlns:ns26="urn:rosettanet:specification:universal:UnitOfMeasure:xsd:codelist:01.05"
+         xmlns:ns4="urn:rosettanet:specification:universal:PartnerIdentification:xsd:schema:01.16"
+         xmlns:ns25="urn:rosettanet:specification:domain:Procurement:SpecialHandling:xsd:codelist:01.04"
+         xmlns:ns30="http://xmlns.oracle.com/pcbpel/adapter/file/ASNtoServiceUser/ASNToServiceUser/WriteASNHash"
+         xmlns:ns31="http://xmlns.oracle.com/pcbpel/adapter/file/ASNtoServiceUser/ASNToServiceUser/FailureNotificationToWMS">
+  <!-- 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+      PARTNERLINKS                                                      
+      List of services participating in this BPEL process               
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  -->
+  <import location="../Schemas/0A1FailureNotification/0A1_MS_V02_00_FailureNotification.xsd"
+          importType="http://www.w3.org/2001/XMLSchema"/>
+  <import namespace="http://www.thbs.com/ASNToServiceUser/XMLSchema/CompositeVariables"
+          location="../Schemas/CompositeVariables.xsd" importType="http://www.w3.org/2001/XMLSchema"/>
+  <import namespace="http://xmlns.oracle.com/pcbpel/adapter/file/ASNtoServiceUser/ASNToServiceUser/ReadASNFromWMS"
+          location="../WSDLs/ReadASNFromWMS.wsdl" importType="http://schemas.xmlsoap.org/wsdl/" ui:processWSDL="true"/>
+  <import location="java.security.MessageDigest" importType="http://schemas.oracle.com/bpel/extension/java"/>
+  <import location="java.security.NoSuchAlgorithmException" importType="http://schemas.oracle.com/bpel/extension/java"/>
+  <import location="oracle.xml.parser.v2.XMLElement" importType="http://schemas.oracle.com/bpel/extension/java"/>
+  <partnerLinks>
+    <!-- 
+      The 'client' role represents the requester of this service. It is 
+      used for callback. The location and correlation information associated
+      with the client role are automatically set using WS-Addressing.
+    -->
+    <partnerLink name="asntoserviceuserbpel_client" partnerLinkType="ns1:Read_plt" myRole="Read_role"/>
+    <partnerLink name="WriteASNHash" partnerLinkType="ns30:Write_plt" partnerRole="Write_role"/>
+    <partnerLink name="FailureNotificationToWMS" partnerLinkType="ns31:Write_plt" partnerRole="Write_role"/>
+  </partnerLinks>
+  <!-- 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+      VARIABLES                                                        
+      List of messages and XML documents used within this BPEL process 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  -->
+  <variables>
+    <!-- Reference to the message passed as input during initiation -->
+    <variable name="inputVariable" messageType="ns1:Read_msg"/>
+    <variable name="CompositeVariables" element="ns2:CompositeVariables"/>
+    <variable name="FileName" type="xsd:string"/>
+    <variable name="ASNFileContent" type="xsd:string"/>
+    <variable name="SendFailureNotification_Write_InputVariable" messageType="ns31:Write_msg"/>
+  </variables>
+  <faultHandlers>
+    <catchAll>
+      <exit name="Exit"/>
+    </catchAll>
+  </faultHandlers>
+  <!-- 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+     ORCHESTRATION LOGIC                                               
+     Set of activities coordinating the flow of messages across the    
+     services integrated within this business process                  
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  -->
+  <sequence name="main">
+    <!-- Receive input from requestor. (Note: This maps to operation defined in ASNToServiceUserBPEL.wsdl) -->
+    <receive name="receiveInput" partnerLink="asntoserviceuserbpel_client" portType="ns1:Read_ptt" operation="Read"
+             variable="inputVariable" createInstance="yes">
+      <bpelx:fromProperties>
+        <bpelx:fromProperty name="jca.file.FileName">$FileName</bpelx:fromProperty>
+      </bpelx:fromProperties>
+    </receive>
+    <assign name="InitializeVariables">
+      <copy>
+        <from>oraext:setFlowInstanceTitle($FileName)</from>
+        <to expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">$CompositeVariables/InstanceName</to>
+      </copy>
+      <copy>
+        <from>$FileName</from>
+        <to expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">$CompositeVariables/ASNFileName</to>
+      </copy>
+      <copy>
+        <from>ora:getFlowId()</from>
+        <to expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">$CompositeVariables/FlowID</to>
+      </copy>
+      <copy>
+        <from>ora:getCompositeName()</from>
+        <to expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">$CompositeVariables/CompositeName</to>
+      </copy>
+      <copy>
+        <from>concat(substring-before($FileName , '.' ) , '_hash.txt')</from>
+        <to expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">$CompositeVariables/HashASNFileName</to>
+      </copy>
+      <copy>
+        <from>oraext:get-content-as-string($inputVariable.body)</from>
+        <to expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">$ASNFileContent</to>
+      </copy>
+    </assign>
+    <scope name="Validation">
+      <faultHandlers>
+        <catchAll>
+          <sequence name="ValidationFailureSequence">
+            <assign name="FailureNotification0A1">
+              <bpelx:annotation>
+                <bpelx:pattern patternName="bpelx:transformation"></bpelx:pattern>
+              </bpelx:annotation>
+              <copy>
+                <from>ora:doXSLTransformForDoc("../Transformations/FailureNotification0A1.xsl", $inputVariable.body)</from>
+                <to variable="SendFailureNotification_Write_InputVariable" part="body"/>
+              </copy>
+            </assign>
+            <invoke name="SendFailureNotification" partnerLink="FailureNotificationToWMS" portType="ns31:Write_ptt"
+                    operation="Write" inputVariable="SendFailureNotification_Write_InputVariable"
+                    bpelx:invokeAsDetail="no"/>
+            <rethrow name="Rethrow"/>
+          </sequence>
+        </catchAll>
+      </faultHandlers>
+      <sequence name="Sequence1">
+        <validate name="ValidateASN" variables="inputVariable"/>
+      </sequence>
+    </scope>
+    <scope name="Hashing">
+      <variables>
+        <variable name="WriteASNHash_InputVariable" messageType="ns30:Write_msg"/>
+        
+      </variables>
+      <sequence name="HashingSequence">
+        <extensionActivity>
+          <bpelx:exec name="HashASNFile">
+            <![CDATA[try{          
+        //String ASNMessage = "123456";   
+        String ASNMessage = (String) getVariableData("ASNFileContent");  
+        MessageDigest md = MessageDigest.getInstance("SHA-256");           
+        md.update(ASNMessage.getBytes());           
+        byte byteData[] = md.digest();           
+        System.out.println("Byte Data: " + byteData);           
+        //convert the byte to hex format method 1           
+        StringBuffer sb = new StringBuffer();           
+        for (int i = 0; i < byteData.length; i++) {           
+        sb.append(Integer.toString((byteData[i] & 0xff) + 0x100, 16).substring(1));           
+        }           
+        System.out.println("Hex format : " + sb.toString());        
+        addAuditTrailEntry("# Value = "+ sb.toString());        
+        setVariableData("ASNFileContent",sb.toString());       
+       
+        
+    }          
+catch (Exception e)          
+    {          
+        System.out.println("exception "+e.getMessage());          
+    }]]>
+          </bpelx:exec>
+        </extensionActivity>
+        <assign name="CopyASNHash">
+          <copy>
+            <from>$ASNFileContent</from>
+            <to expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">$WriteASNHash_InputVariable.body</to>
+          </copy>
+        </assign>
+        <invoke name="WriteASNHash" partnerLink="WriteASNHash" portType="ns30:Write_ptt" operation="Write"
+                inputVariable="WriteASNHash_InputVariable" bpelx:invokeAsDetail="no">
+          <bpelx:toProperties>
+            <bpelx:toProperty name="jca.file.FileName">$CompositeVariables/HashASNFileName</bpelx:toProperty>
+          </bpelx:toProperties>
+        </invoke>
+      </sequence>
+    </scope>
+  </sequence>
+</process>

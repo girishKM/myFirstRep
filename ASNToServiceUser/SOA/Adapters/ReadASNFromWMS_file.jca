@@ -1,0 +1,16 @@
+<adapter-config name="ReadASNFromWMS" adapter="file" wsdlLocation="../WSDLs/ReadASNFromWMS.wsdl" xmlns="http://platform.integration.oracle/blocks/adapter/fw/metadata">
+  
+  <connection-factory UIincludeWildcard="*.xml" location="eis/FileAdapter"/>
+  <endpoint-activation portType="Read_ptt" operation="Read">
+    <activation-spec className="oracle.tip.adapter.file.inbound.FileActivationSpec">
+      <property name="PhysicalDirectory" value="C:\Users\harshal_kulkarni\Desktop\POC\Workspace\Test\FromWMS"/>
+      <property name="UseHeaders" value="false"/>
+      <property name="MinimumAge" value="0"/>
+      <property name="Recursive" value="false"/>
+      <property name="PollingFrequency" value="30"/>
+      <property name="DeleteFile" value="true"/>
+      <property name="IncludeFiles" value=".*\.xml"/>
+    </activation-spec>
+  </endpoint-activation>
+
+</adapter-config>

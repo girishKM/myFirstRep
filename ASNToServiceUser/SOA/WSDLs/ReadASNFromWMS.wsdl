@@ -1,0 +1,47 @@
+<?xml version= '1.0' encoding= 'UTF-8' ?>
+<wsdl:definitions
+     name="ReadASNFromWMS"
+     targetNamespace="http://xmlns.oracle.com/pcbpel/adapter/file/ASNtoServiceUser/ASNToServiceUser/ReadASNFromWMS"
+     xmlns:tns="http://xmlns.oracle.com/pcbpel/adapter/file/ASNtoServiceUser/ASNToServiceUser/ReadASNFromWMS"
+     xmlns:jca="http://xmlns.oracle.com/pcbpel/wsdl/jca/"
+     xmlns:plt="http://schemas.xmlsoap.org/ws/2003/05/partner-link/"
+     xmlns:pc="http://xmlns.oracle.com/pcbpel/"
+     xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+     xmlns:ns1="http://www.thbs.com/ASNToServiceUser/XMLSchema/CompositeVariables"
+     xmlns:imp1="urn:rosettanet:specification:interchange:AdvanceShipmentNotification:xsd:schema:02.06"
+    >
+    <plt:partnerLinkType name="Read_plt">
+        <plt:role name="Read_role">
+            <plt:portType name="tns:Read_ptt"/>
+        </plt:role>
+    </plt:partnerLinkType>
+    <wsdl:types>
+        <schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://xmlns.oracle.com/pcbpel/adapter/file/ASNtoServiceUser/ASNToServiceUser/ReadASNFromWMS"
+             xmlns:jca="http://xmlns.oracle.com/pcbpel/wsdl/jca/" xmlns:plt="http://schemas.xmlsoap.org/ws/2003/05/partner-link/"
+             xmlns:pc="http://xmlns.oracle.com/pcbpel/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+             xmlns:ns1="http://www.thbs.com/ASNToServiceUser/XMLSchema/CompositeVariables"
+             xmlns:imp1="urn:rosettanet:specification:interchange:AdvanceShipmentNotification:xsd:schema:02.06">
+            <import namespace="http://www.thbs.com/ASNToServiceUser/XMLSchema/CompositeVariables"
+                 schemaLocation="../Schemas/CompositeVariables.xsd"/>
+        </schema>
+        <schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://xmlns.oracle.com/pcbpel/adapter/file/ASNtoServiceUser/ASNToServiceUser/ReadASNFromWMS"
+             xmlns:jca="http://xmlns.oracle.com/pcbpel/wsdl/jca/" xmlns:plt="http://schemas.xmlsoap.org/ws/2003/05/partner-link/"
+             xmlns:pc="http://xmlns.oracle.com/pcbpel/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+             xmlns:ns1="http://www.thbs.com/ASNToServiceUser/XMLSchema/CompositeVariables"
+             xmlns:imp1="urn:rosettanet:specification:interchange:AdvanceShipmentNotification:xsd:schema:02.06">
+            <import namespace="urn:rosettanet:specification:interchange:AdvanceShipmentNotification:xsd:schema:02.06"
+                 schemaLocation="../Schemas/XML/Interchange/AdvanceShipmentNotification_02_06.xsd"/>
+        </schema>
+        <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+            <xsd:include schemaLocation="../Schemas/0A1FailureNotification/0A1_MS_V02_00_FailureNotification.xsd"/>
+        </xsd:schema>
+    </wsdl:types>
+    <wsdl:message name="Read_msg">
+        <wsdl:part name="body" element="imp1:AdvanceShipmentNotification"/>
+    </wsdl:message>
+    <wsdl:portType name="Read_ptt">
+        <wsdl:operation name="Read">
+            <wsdl:input message="tns:Read_msg"/>
+        </wsdl:operation>
+    </wsdl:portType>
+</wsdl:definitions>

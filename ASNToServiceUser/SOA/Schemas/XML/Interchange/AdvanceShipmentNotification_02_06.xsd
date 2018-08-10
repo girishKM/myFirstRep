@@ -1,0 +1,380 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema targetNamespace="urn:rosettanet:specification:interchange:AdvanceShipmentNotification:xsd:schema:02.06" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:urss="urn:rosettanet:specification:system:xml:1.0" xmlns:tns="urn:rosettanet:specification:interchange:AdvanceShipmentNotification:xsd:schema:02.06" xmlns:dic="urn:rosettanet:specification:domain:Logistics:Incoterms:xsd:codelist:01.03" xmlns:dscd="urn:rosettanet:specification:domain:Logistics:ShipmentChangeDisposition:xsd:codelist:01.03" xmlns:dsm="urn:rosettanet:specification:domain:Logistics:ShipmentMode:xsd:codelist:01.05" xmlns:dl="urn:rosettanet:specification:domain:Logistics:xsd:schema:02.23" xmlns:upi="urn:rosettanet:specification:universal:PartnerIdentification:xsd:schema:01.16" xmlns:dp="urn:rosettanet:specification:domain:Procurement:xsd:schema:02.30" xmlns:ume="urn:rosettanet:specification:universal:MonetaryExpression:xsd:schema:01.07" xmlns:sha="urn:rosettanet:specification:domain:Shared:xsd:schema:01.19" xmlns:rssl="urn:rosettanet:specification:domain:Shared:ShippingServiceLevel:xsd:codelist:01.01" xmlns:upd="urn:rosettanet:specification:universal:PhysicalDimension:xsd:schema:01.07" xmlns:rpkt="urn:rosettanet:specification:domain:Shared:PackageType:xsd:codelist:01.01" xmlns:updi="urn:rosettanet:specification:universal:ProductIdentification:xsd:schema:01.04" xmlns:dnecc="urn:rosettanet:specification:domain:Logistics:NationalExportControlClassification:xsd:codelist:01.03" xmlns:uuom="urn:rosettanet:specification:universal:UnitOfMeasure:xsd:codelist:01.05" xmlns:udc="urn:rosettanet:specification:universal:Document:xsd:schema:01.12" xmlns:dm="urn:rosettanet:specification:domain:Manufacturing:xsd:schema:02.28" xmlns:ssdh="urn:rosettanet:specification:system:StandardDocumentHeader:xsd:schema:01.24" elementFormDefault="qualified" attributeFormDefault="unqualified" version="02.06">
+	<xs:import namespace="urn:rosettanet:specification:domain:Logistics:Incoterms:xsd:codelist:01.03" schemaLocation="../Domain/Logistics/CodeList/RN_Incoterms_01_03.xsd"/>
+	<xs:import namespace="urn:rosettanet:specification:domain:Logistics:ShipmentChangeDisposition:xsd:codelist:01.03" schemaLocation="../Domain/Logistics/CodeList/RN_ShipmentChangeDisposition_01_03.xsd"/>
+	<xs:import namespace="urn:rosettanet:specification:domain:Logistics:ShipmentMode:xsd:codelist:01.05" schemaLocation="../Domain/Logistics/CodeList/RN_ShipmentMode_01_05.xsd"/>
+	<xs:import namespace="urn:rosettanet:specification:domain:Logistics:xsd:schema:02.23" schemaLocation="../Domain/Logistics/Logistics_02_23.xsd"/>
+	<xs:import namespace="urn:rosettanet:specification:universal:PartnerIdentification:xsd:schema:01.16" schemaLocation="../Universal/PartnerIdentification_01_16.xsd"/>
+	<xs:import namespace="urn:rosettanet:specification:domain:Procurement:xsd:schema:02.30" schemaLocation="../Domain/Procurement/Procurement_02_30.xsd"/>
+	<xs:import namespace="urn:rosettanet:specification:universal:MonetaryExpression:xsd:schema:01.07" schemaLocation="../Universal/MonetaryExpression_01_07.xsd"/>
+	<xs:import namespace="urn:rosettanet:specification:domain:Shared:xsd:schema:01.19" schemaLocation="../Domain/Shared/Shared_01_19.xsd"/>
+	<xs:import namespace="urn:rosettanet:specification:domain:Shared:ShippingServiceLevel:xsd:codelist:01.01" schemaLocation="../Domain/Shared/CodeList/RN_ShippingServiceLevel_01_01.xsd"/>
+	<xs:import namespace="urn:rosettanet:specification:universal:PhysicalDimension:xsd:schema:01.07" schemaLocation="../Universal/PhysicalDimension_01_07.xsd"/>
+	<xs:import namespace="urn:rosettanet:specification:domain:Shared:PackageType:xsd:codelist:01.01" schemaLocation="../Domain/Shared/CodeList/RN_PackageType_01_01.xsd"/>
+	<xs:import namespace="urn:rosettanet:specification:universal:ProductIdentification:xsd:schema:01.04" schemaLocation="../Universal/ProductIdentification_01_04.xsd"/>
+	<xs:import namespace="urn:rosettanet:specification:domain:Logistics:NationalExportControlClassification:xsd:codelist:01.03" schemaLocation="../Domain/Logistics/CodeList/RN_NationalExportControlClassification_01_03.xsd"/>
+	<xs:import namespace="urn:rosettanet:specification:universal:UnitOfMeasure:xsd:codelist:01.05" schemaLocation="../Universal/CodeList/RN_UnitOfMeasure_01_05.xsd"/>
+	<xs:import namespace="urn:rosettanet:specification:universal:Document:xsd:schema:01.12" schemaLocation="../Universal/Document_01_12.xsd"/>
+	<xs:import namespace="urn:rosettanet:specification:domain:Manufacturing:xsd:schema:02.28" schemaLocation="../Domain/Manufacturing/Manufacturing_02_28.xsd"/>
+	<xs:import namespace="urn:rosettanet:specification:system:StandardDocumentHeader:xsd:schema:01.24" schemaLocation="../System/StandardDocumentHeader_01_24.xsd"/>
+	<xs:annotation>
+		<xs:documentation>
+			<urss:Copyright>© 2008 RosettaNet. All rights reserved. No part of this publication may be reproduced, stored in a retrieval system, or transmitted, in any form or by any means, electronic, mechanical, photocopying, recording, or otherwise, without the inclusion of this copyright notice. Any derivative works must cite the copyright notice. Any public redistribution or sale of this publication or derivative works requires prior written permission of the publisher.</urss:Copyright>
+			<urss:Disclaimer>RosettaNet makes no representation about the suitability of this work for any purpose or regarding any claims made by products which use it. It is provided as is without expressed or implied warranty.</urss:Disclaimer>
+			<urss:Program>Certificate of Analysis Milestone Program</urss:Program>
+			<urss:Purpose>Collection of all Advance Shipment Notification structures</urss:Purpose>
+		</xs:documentation>
+		<xs:appinfo>
+			<urss:CreationDate>2005-04-12</urss:CreationDate>
+			<urss:LastUpdatedDate>2015-02-10</urss:LastUpdatedDate>
+		</xs:appinfo>
+	</xs:annotation>
+	<xs:element name="AdvanceShipmentNotification" type="tns:AdvanceShipmentNotificationType"/>
+	<xs:complexType name="AdvanceShipmentType">
+		<xs:annotation>
+			<xs:appinfo>
+				<urss:Definition>The Advance Shipment Notification contains detailed information on when product shipped and expected date of arrival, how product shipped, and detail on what the shipment contains.</urss:Definition>
+				<urss:CreationDate>2005-04-12</urss:CreationDate>
+				<urss:LastUpdatedDate>2007-09-05</urss:LastUpdatedDate>
+				<urss:TypeVersion>02.02</urss:TypeVersion>
+			</xs:appinfo>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="PurchasedBy" type="upi:SpecifiedPartnerDescriptionType">
+				<xs:annotation>
+					<xs:appinfo>
+						<urss:Definition>The party who is a purchaser of a product.</urss:Definition>
+					</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="ShipFrom" type="upi:SpecifiedPartnerDescriptionType">
+				<xs:annotation>
+					<xs:appinfo>
+						<urss:Definition>The DUNS or DUNS + 4 number of the location of the originating party initiating a shipment or transaction.</urss:Definition>
+					</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Shipment" type="tns:ShipmentType"/>
+			<xs:element name="SoldBy" type="upi:SpecifiedPartnerDescriptionType">
+				<xs:annotation>
+					<xs:appinfo>
+						<urss:Definition>The party who is a seller of a product.</urss:Definition>
+					</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+		<xs:attribute name="schemaVersion" type="xs:token"/>
+	</xs:complexType>
+	<xs:complexType name="AdvanceShipmentNotificationType">
+		<xs:annotation>
+			<xs:appinfo>
+				<urss:Definition>A message wrapper for the PIP3B2.</urss:Definition>
+				<urss:CreationDate>2005-04-12</urss:CreationDate>
+				<urss:LastUpdatedDate>2007-09-24</urss:LastUpdatedDate>
+				<urss:TypeVersion>02.03</urss:TypeVersion>
+			</xs:appinfo>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="AdvanceShipment" type="tns:AdvanceShipmentType"/>
+			<xs:element ref="ssdh:DocumentHeader" minOccurs="0"/>
+		</xs:sequence>
+		<xs:attribute name="schemaVersion" type="xs:token"/>
+	</xs:complexType>
+	<xs:complexType name="DeviceActivationInformationType">
+		<xs:annotation>
+			<xs:appinfo>
+				<urss:Definition>Information to activate for a serialized product (i.e. handsets or other wireless devices).</urss:Definition>
+				<urss:CreationDate>2005-09-09</urss:CreationDate>
+				<urss:LastUpdatedDate>2007-09-05</urss:LastUpdatedDate>
+				<urss:TypeVersion>02.02</urss:TypeVersion>
+			</xs:appinfo>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="DeviceActivationNumber" type="tns:DeviceActivationNumberType" maxOccurs="unbounded" minOccurs="0"/>
+		</xs:sequence>
+		<xs:attribute name="schemaVersion" type="xs:token"/>
+	</xs:complexType>
+	<xs:complexType name="DeviceActivationNumberType">
+		<xs:annotation>
+			<xs:appinfo>
+				<urss:Definition>Number used to activate the serialized product.</urss:Definition>
+				<urss:CreationDate>2005-09-09</urss:CreationDate>
+				<urss:LastUpdatedDate>2007-09-05</urss:LastUpdatedDate>
+				<urss:TypeVersion>02.02</urss:TypeVersion>
+			</xs:appinfo>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="ActivationNumber" type="xs:string" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo>
+						<urss:Definition>Text to describe the serialization identifier.</urss:Definition>
+					</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="CalledNumberIdentifier" type="xs:string" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo>
+						<urss:Definition>The actual value of the identifier type specified by 'ActivationNumberType'.</urss:Definition>
+					</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+		<xs:attribute name="schemaVersion" type="xs:token"/>
+	</xs:complexType>
+	<xs:complexType name="DocumentSubLineLotShipReferenceType">
+		<xs:annotation>
+			<xs:appinfo>
+				<urss:Definition>Reference to document(s) this shipment is being sent against (i.e. Purchase Order).</urss:Definition>
+				<urss:CreationDate>2005-04-12</urss:CreationDate>
+				<urss:LastUpdatedDate>2007-09-05</urss:LastUpdatedDate>
+				<urss:TypeVersion>02.02</urss:TypeVersion>
+			</xs:appinfo>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="udc:BusinessDocumentReferenceType">
+				<xs:sequence>
+					<xs:element name="LotShipReference" type="tns:LotShipReferenceType" maxOccurs="unbounded" minOccurs="0"/>
+					<xs:element name="RequestedQuantity" type="xs:float" minOccurs="0">
+						<xs:annotation>
+							<xs:appinfo>
+								<urss:Definition>The quantity of product requested.</urss:Definition>
+							</xs:appinfo>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="ShippedLotQuantity" type="xs:float">
+						<xs:annotation>
+							<xs:appinfo>
+								<urss:Definition>A quantity of product shipped of a specific manufacturing lot within a shipping container.</urss:Definition>
+							</xs:appinfo>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="LotShipReferenceType">
+		<xs:annotation>
+			<xs:appinfo>
+				<urss:Definition>Reference to specific lot information (i.e. quantity, lot identifiers) contained in this shipment.</urss:Definition>
+				<urss:CreationDate>2005-04-12</urss:CreationDate>
+				<urss:LastUpdatedDate>2007-09-05</urss:LastUpdatedDate>
+				<urss:TypeVersion>02.02</urss:TypeVersion>
+			</xs:appinfo>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="ExpiryDate" type="xs:date" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo>
+						<urss:Definition>The date that a contractual agreement expires.</urss:Definition>
+					</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element ref="dp:LotIdentification"/>
+			<xs:element ref="dm:LotQuantity" maxOccurs="unbounded"/>
+			<xs:element name="ManufacturingDateCode" type="xs:string" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo>
+						<urss:Definition>The unique identifier assigned to a product by a manufacturer to distinguish individual manufacturing periods.</urss:Definition>
+					</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+		<xs:attribute name="schemaVersion" type="xs:token"/>
+	</xs:complexType>
+	<xs:complexType name="ShipmentType">
+		<xs:annotation>
+			<xs:appinfo>
+				<urss:Definition>The collection of business properties that describe a consignment tendered for transportation from one point to another.</urss:Definition>
+				<urss:CreationDate>2005-04-12</urss:CreationDate>
+				<urss:LastUpdatedDate>2007-09-05</urss:LastUpdatedDate>
+				<urss:TypeVersion>02.02</urss:TypeVersion>
+			</xs:appinfo>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="CarrierCode" type="sha:SCACType" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:appinfo>
+						<urss:Definition>A unique carrier identification code, based on Standard Carrier Alpha Code(s).</urss:Definition>
+					</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="FreightAmount" type="ume:FinancialAmountType" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo>
+						<urss:Definition>The freight amount charge that should be paid for this container.</urss:Definition>
+					</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="FreightPaymentAccount" type="xs:string" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo>
+						<urss:Definition>Identification number of an account.</urss:Definition>
+					</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Identifier" type="xs:string">
+				<xs:annotation>
+					<xs:appinfo>
+						<urss:Definition>Reference identifier assigned by the partner originating a shipment to uniquely identify the shipment.</urss:Definition>
+					</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element ref="dic:Incoterms" minOccurs="0"/>
+			<xs:element name="NumberOfShippingContainers" type="xs:float">
+				<xs:annotation>
+					<xs:appinfo>
+						<urss:Definition>A numeric expression of the number of outer containers for product shipping.</urss:Definition>
+					</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element ref="dscd:ShipmentChangeDisposition" minOccurs="0"/>
+			<xs:element name="ShipmentChangeReason" type="xs:string" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo>
+						<urss:Definition>Team must provide valid definition. Should be changed from Free Form Text to a code list.</urss:Definition>
+					</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element ref="dl:ShipmentDate" maxOccurs="unbounded"/>
+			<xs:element ref="dsm:ShipmentMode" minOccurs="0"/>
+			<xs:element name="ShippingContainer" type="tns:ShippingContainerType" maxOccurs="unbounded"/>
+			<xs:element ref="rssl:ShippingServiceLevel"/>
+			<xs:element name="ShipTo" type="upi:SpecifiedPartnerDescriptionType">
+				<xs:annotation>
+					<xs:appinfo>
+						<urss:Definition>The partner and/or location to which the product must be delivered.</urss:Definition>
+					</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element ref="dp:SpecialHandlingInstruction" minOccurs="0"/>
+			<xs:element ref="dl:TrackingReference" maxOccurs="unbounded" minOccurs="0"/>
+			<xs:element name="TransportedBy" type="upi:SpecifiedPartnerDescriptionType">
+				<xs:annotation>
+					<xs:appinfo>
+						<urss:Definition>The party responsible for either carrying or forwarding the product.</urss:Definition>
+					</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+		<xs:attribute name="schemaVersion" type="xs:token"/>
+	</xs:complexType>
+	<xs:complexType name="ShippingContainerType">
+		<xs:annotation>
+			<xs:appinfo>
+				<urss:Definition>The collection of business properties that describe the nature and contents of a shipping unit.</urss:Definition>
+				<urss:CreationDate>2005-04-12</urss:CreationDate>
+				<urss:LastUpdatedDate>2007-09-05</urss:LastUpdatedDate>
+				<urss:TypeVersion>02.02</urss:TypeVersion>
+			</xs:appinfo>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="Identifier" type="xs:string" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo>
+						<urss:Definition>Unique identifier that represents a shipping container. Normally a UCC structured identifier. Also known as a "license plate".</urss:Definition>
+					</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element ref="upd:Linear" minOccurs="0"/>
+			<xs:element ref="dl:MassPhysicalDimension" minOccurs="0"/>
+			<xs:element name="NumberOfShippingContainers" type="xs:float" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo>
+						<urss:Definition>A numeric expression of the number of outer containers for product shipping.</urss:Definition>
+					</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element ref="rpkt:PackageType" minOccurs="0"/>
+			<xs:element name="ShippingContainerItem" type="tns:ShippingContainerItemType" maxOccurs="unbounded" minOccurs="0"/>
+			<xs:element ref="dp:SpecialHandlingInstruction" minOccurs="0"/>
+			<xs:element name="SubContainer" type="tns:SubContainerType" maxOccurs="unbounded" minOccurs="0"/>
+			<xs:element ref="dl:TrackingReference" maxOccurs="unbounded" minOccurs="0"/>
+		</xs:sequence>
+		<xs:attribute name="schemaVersion" type="xs:token"/>
+	</xs:complexType>
+	<xs:complexType name="ShippingContainerItemType">
+		<xs:annotation>
+			<xs:appinfo>
+				<urss:Definition>The collection of business properties that describe the nature and contents of the good contained within shipping unit.</urss:Definition>
+				<urss:CreationDate>2005-04-12</urss:CreationDate>
+				<urss:LastUpdatedDate>2007-09-05</urss:LastUpdatedDate>
+				<urss:TypeVersion>02.02</urss:TypeVersion>
+			</xs:appinfo>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element ref="udc:BusinessDocumentReference" maxOccurs="unbounded" minOccurs="0"/>
+			<xs:element name="DeviceActivationInformation" type="tns:DeviceActivationInformationType" maxOccurs="unbounded" minOccurs="0"/>
+			<xs:element name="DocumentSubLineLotShipReference" type="tns:DocumentSubLineLotShipReferenceType" maxOccurs="unbounded"/>
+			<xs:element name="FreightAmount" type="ume:FinancialAmountType" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo>
+						<urss:Definition>The freight amount charge that should be paid for this container.</urss:Definition>
+					</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="HazardousMaterial" type="xs:boolean">
+				<xs:annotation>
+					<xs:appinfo>
+						<urss:Definition>Indicates whether the product contains hazardous material.</urss:Definition>
+					</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element ref="dl:HazardousMaterialDescription" maxOccurs="unbounded" minOccurs="0"/>
+			<xs:element name="Identifier" type="xs:string" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo>
+						<urss:Definition>The identifier used to denote the lowest unit in a shipment, i.e., a package within a box.</urss:Definition>
+					</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element ref="dl:ManufacturerProfile" maxOccurs="unbounded" minOccurs="0"/>
+			<xs:element ref="dnecc:NationalExportControlClassification" maxOccurs="unbounded" minOccurs="0"/>
+			<xs:element name="NationalHarmonizedTariffSchedule" type="xs:string" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo>
+						<urss:Definition>Code identifying product classification for international shipping.</urss:Definition>
+					</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="PackageCount" type="xs:float" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo>
+						<urss:Definition>A numeric expression of the number of item packages within a container.</urss:Definition>
+					</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element ref="updi:ProductIdentification"/>
+			<xs:element name="ShippedQuantity" type="xs:float">
+				<xs:annotation>
+					<xs:appinfo>
+						<urss:Definition>Quantity of product shipped.</urss:Definition>
+					</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element ref="dp:SpecialHandlingInstruction" minOccurs="0"/>
+			<xs:element name="TraceIdentifier" type="xs:string" maxOccurs="unbounded" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo>
+						<urss:Definition>Free form text for a non-serial lot identifier.</urss:Definition>
+					</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element ref="uuom:UnitOfMeasure"/>
+		</xs:sequence>
+		<xs:attribute name="schemaVersion" type="xs:token"/>
+	</xs:complexType>
+	<xs:complexType name="SubContainerType">
+		<xs:annotation>
+			<xs:appinfo>
+				<urss:Definition>The collection of business properties that describe the nature and contents of inner containers (packages) contained within an outer shipping unit.</urss:Definition>
+				<urss:CreationDate>2005-04-12</urss:CreationDate>
+				<urss:LastUpdatedDate>2007-09-05</urss:LastUpdatedDate>
+				<urss:TypeVersion>02.02</urss:TypeVersion>
+			</xs:appinfo>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="ShippingContainer" type="tns:ShippingContainerType"/>
+		</xs:sequence>
+		<xs:attribute name="schemaVersion" type="xs:token"/>
+	</xs:complexType>
+</xs:schema>

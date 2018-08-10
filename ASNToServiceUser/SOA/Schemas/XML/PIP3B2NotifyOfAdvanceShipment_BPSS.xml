@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSPY v5 rel. 4 U (http://www.xmlspy.com) by N/A (RosettaNet) -->
+<!-- Created by RosettaNet -->
+<ProcessSpecification name="PIP3B2NotifyOfAdvanceShipment" nameID="urn:rosettanet:specification:interchange:PIP3B2:xml:bpss:v11_04" version="V11.04" xmlns="http://www.ebxml.org/BusinessProcess/1.01" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.ebxml.org/BusinessProcess/1.01 ebBPSS1.01.xsd">
+	<Documentation>The purpose of this PIP is to 1) automate advance shipment information exchanges between the supply chain partners, 2) improve information exchange quality and efficiency when gathering advance shipment data, 3) save time and reduce processing costs, 4) reduce workload in supply chain by introducing a common global approach for sharing advance shipment data across the full high-tech supply chain.</Documentation>
+	<!--REM: Advance Shipment Notification -->
+	<BusinessDocument name="Advance Shipment Notification" nameID="PIP3B2AdvanceShipmentNotification" specificationLocation="urn:rosettanet:specification:interchange:AdvanceShipmentNotification:xsd:schema:02.06">
+		<Documentation>The Advance Shipment Notification contains detailed information on when product shipped, expected date of arrival, how product shipped, and detail of the shipment contents.</Documentation>
+	</BusinessDocument>
+	<Package name="Order Management" nameID="3">
+		<Documentation>Defines Cluster</Documentation>
+		<Package name="Transportation and Distribution" nameID="3B">
+			<Documentation>Defines Segment</Documentation>
+			<Package name="Notify Of Advance Shipment" nameID="3B2">
+				<Documentation>Defines PIP</Documentation>
+				<BusinessTransaction name="Notify Of Advance Shipment" nameID="NotifyOfAdvanceShipment_BT" isGuaranteedDeliveryRequired="true">
+					<RequestingBusinessActivity name="Initiate Advance Shipment Notification" nameID="InitiateAdvanceShipmentNotification" isAuthorizationRequired="true" isIntelligibleCheckRequired="true" isNonRepudiationReceiptRequired="true" isNonRepudiationRequired="true" timeToAcknowledgeReceipt="PT30M" retryCount="3">
+						<DocumentEnvelope name="Advance Shipment Notification" nameID="AdvanceShipmentNotification_DE" businessDocument='//BusinessDocument[@name="Advance Shipment Notification"]' businessDocumentIDREF="PIP3B2AdvanceShipmentNotification" isAuthenticated="persistent" isConfidential="transient" isTamperDetectable="persistent"/>
+					</RequestingBusinessActivity>
+					<RespondingBusinessActivity name="Process Advance Shipment Notification" nameID="ProcessAdvanceShipmentNotification"/>
+				</BusinessTransaction>
+				<!--REM: Binary Collaborations-->
+				<BinaryCollaboration name="Notify Of Advance Shipment" nameID="NotifyOfAdvanceShipment_BC" initiatingRoleIDREF="ShipperID" preCondition="true" postCondition="true">
+					<Documentation>The PIP Start State is comprised of the following conditions: a. TPA Approved and Exist In Backend System b. Sending Partner Exist as Party and Valid c. Receiving Partner Exist as Party d. Business Document Exist In Backend System, Valid, Non-Repudiated, and Authorized. </Documentation>
+					<Documentation>The PIP End States are comprised of the following conditions: a. Acknowledgment of Receipt Exist In Backend System, Valid, and Non-Repudiated b. Receiving Partner Authorized ; PIP Failure State: a. NOT Successful b. Retry Count Exceeded</Documentation>
+					<Role name="Shipper" nameID="ShipperID"/>
+					<Role name="Receiver" nameID="ReceiverID"/>
+					<Start nameID="Start_ST" toBusinessState='../BusinessTransactionActivity[@name="Notify Of Advance Shipment"]' toBusinessStateIDREF="PIP3B2NotifyOfAdvanceShipment"/>
+					<BusinessTransactionActivity name="Notify Of Advance Shipment" nameID="NotifyOfAdvanceShipment_BTA" businessTransaction='//BusinessTransaction[@name="Notify Of Advance Shipment"]' businessTransactionIDREF="NotifyOfAdvanceShipment_BT" fromRole='../Role[@name="Shipper"]' fromRoleIDREF="ShipperID" toRole='../Role[@name="Receiver"]' toRoleIDREF="ReceiverID" isLegallyBinding="true" isConcurrent="false"/>
+					<!--REM: The following shows a business transaction with two (one-pair) possible responses, each pair with a success and a failure.These are designed to reflect business level conditions only and not message level conditions such as Receipt Acknowledgements (ReceiptAck) and/or Notification of Failures (NoF). -->
+					<!--REM:  Success Condition for Notify Of Advance Shipment-->
+					<Success nameID="Success_ST" fromBusinessState='../BusinessTransactionActivity[@name="Notify Of Advance Shipment"]' conditionGuard="Success">
+						<ConditionExpression expressionLanguage="XPath" expression='//BusinessServiceInformation/ProcessState="Success"'/>
+					</Success>
+					<!--REM:  Failure Condition for Notify Of Advance Shipment-->
+					<Failure nameID="Failure_ST" fromBusinessState='../BusinessTransactionActivity[@name="Notify Of Advance Shipment"]' conditionGuard="BusinessFailure">
+						<ConditionExpression expressionLanguage="XPath" expression='//BusinessServiceInformation/ProcessState="Failure"'/>
+					</Failure>
+				</BinaryCollaboration>
+			</Package>
+		</Package>
+	</Package>
+</ProcessSpecification>

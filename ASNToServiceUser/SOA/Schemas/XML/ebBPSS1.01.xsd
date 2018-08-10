@@ -1,0 +1,580 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema targetNamespace="http://www.ebxml.org/BusinessProcess/1.01" xmlns="http://www.ebxml.org/BusinessProcess/1.01" xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+	<xsd:element name="Attachment">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element ref="Documentation" minOccurs="0" maxOccurs="unbounded"/>
+			</xsd:sequence>
+			<xsd:attributeGroup ref="name"/>
+			<xsd:attribute name="businessDocument" type="xsd:string" use="required"/>
+			<xsd:attribute name="businessDocumentIDREF" type="GUIDREF"/>
+			<xsd:attribute name="specification" type="xsd:anyURI"/>
+			<xsd:attribute name="mimeType" type="xsd:string" use="optional"/>
+			<xsd:attributeGroup ref="documentSecurity"/>
+		</xsd:complexType>
+		<xsd:unique name="Attachment-ID">
+			<xsd:selector xpath="."/>
+			<xsd:field xpath="nameID"/>
+		</xsd:unique>
+	</xsd:element>
+	<xsd:element name="BinaryCollaboration">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element ref="Documentation" minOccurs="0" maxOccurs="unbounded"/>
+				<xsd:element name="Role" type="RoleType" minOccurs="2" maxOccurs="2"/>
+				<xsd:element ref="Start"/>
+				<xsd:choice maxOccurs="unbounded">
+					<xsd:element ref="BusinessTransactionActivity"/>
+					<xsd:element ref="CollaborationActivity"/>
+				</xsd:choice>
+				<xsd:element ref="Success" maxOccurs="unbounded"/>
+				<xsd:element ref="Failure" maxOccurs="unbounded"/>
+				<xsd:element ref="Transition" minOccurs="0" maxOccurs="unbounded"/>
+				<xsd:element ref="Fork" minOccurs="0" maxOccurs="unbounded"/>
+				<xsd:element ref="Join" minOccurs="0" maxOccurs="unbounded"/>
+				<xsd:element ref="Decision" minOccurs="0" maxOccurs="unbounded"/>
+			</xsd:sequence>
+			<xsd:attributeGroup ref="name"/>
+			<xsd:attribute name="pattern" type="xsd:anyURI"/>
+			<xsd:attribute name="beginsWhen" type="xsd:string"/>
+			<xsd:attribute name="endsWhen" type="xsd:string"/>
+			<xsd:attribute name="preCondition" type="xsd:string"/>
+			<xsd:attribute name="postCondition" type="xsd:string"/>
+			<xsd:attribute name="timeToPerform" type="xsd:duration"/>
+			<xsd:attribute name="initiatingRoleIDREF" type="GUIDREF" use="optional"/>
+			<xsd:attribute name="isInnerCollaboration" type="xsd:boolean" default="false"/>
+		</xsd:complexType>
+		<xsd:unique name="BinaryCollaboration-ID">
+			<xsd:selector xpath="."/>
+			<xsd:field xpath="nameID"/>
+		</xsd:unique>
+		<xsd:unique name="BinaryCollaborationRole-ID">
+			<xsd:selector xpath=".//Role"/>
+			<xsd:field xpath="nameID"/>
+		</xsd:unique>
+	</xsd:element>
+	<xsd:element name="BusinessDocument">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element ref="Documentation" minOccurs="0" maxOccurs="unbounded"/>
+				<xsd:element ref="ConditionExpression" minOccurs="0"/>
+			</xsd:sequence>
+			<xsd:attributeGroup ref="name"/>
+			<xsd:attribute name="specificationLocation" type="xsd:anyURI"/>
+			<xsd:attribute name="specificationID" type="xsd:anyURI"/>
+			<xsd:attribute name="namespacePrefixes" type="xsd:NMTOKENS"/>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="SubstitutionSet">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element ref="Documentation" minOccurs="0" maxOccurs="unbounded"/>
+				<xsd:element ref="DocumentSubstitution" minOccurs="0" maxOccurs="unbounded"/>
+				<xsd:element ref="AttributeSubstitution" minOccurs="0" maxOccurs="unbounded"/>
+			</xsd:sequence>
+			<xsd:attributeGroup ref="name"/>
+			<xsd:attribute name="applyToScope" type="xsd:string" use="required"/>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="DocumentSubstitution">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element ref="Documentation" minOccurs="0" maxOccurs="unbounded"/>
+			</xsd:sequence>
+			<xsd:attribute name="originalBusinessDocument" type="xsd:string" use="required"/>
+			<xsd:attribute name="originalBusinessDocumentID" type="GUIDREF"/>
+			<xsd:attribute name="substituteBusinessDocumentLocation" type="xsd:anyURI" use="required"/>
+			<xsd:attribute name="substituteBusinessDocumentId" type="xsd:anyURI"/>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="AttributeSubstitution">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element ref="Documentation" minOccurs="0" maxOccurs="unbounded"/>
+			</xsd:sequence>
+			<xsd:attribute name="attributeName" type="xsd:string" use="required"/>
+			<xsd:attribute name="value" type="xsd:string" use="required"/>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="ConditionExpression">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element ref="Documentation" minOccurs="0" maxOccurs="unbounded"/>
+			</xsd:sequence>
+			<xsd:attribute name="expressionLanguage" type="xsd:string" use="required"/>
+			<xsd:attribute name="expression" type="xsd:string" use="required"/>
+			<xsd:attribute name="prefix" type="xsd:string" use="optional"/>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="BusinessPartnerRole">
+		<xsd:annotation>
+			<xsd:documentation source="BPSS 1.1">Deprecated for v1.1</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element ref="Documentation" minOccurs="0" maxOccurs="unbounded"/>
+				<xsd:element ref="Performs" minOccurs="0" maxOccurs="unbounded"/>
+				<xsd:element ref="Transition" minOccurs="0" maxOccurs="unbounded"/>
+			</xsd:sequence>
+			<xsd:attributeGroup ref="name"/>
+		</xsd:complexType>
+		<xsd:unique name="BusinessPartnerRole-ID">
+			<xsd:selector xpath="."/>
+			<xsd:field xpath="nameID"/>
+		</xsd:unique>
+	</xsd:element>
+	<xsd:element name="BusinessTransaction">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element ref="Documentation" minOccurs="0" maxOccurs="unbounded"/>
+				<xsd:element ref="RequestingBusinessActivity"/>
+				<xsd:element ref="RespondingBusinessActivity"/>
+			</xsd:sequence>
+			<xsd:attributeGroup ref="name"/>
+			<xsd:attribute name="pattern" type="xsd:anyURI"/>
+			<xsd:attribute name="isGuaranteedDeliveryRequired" type="xsd:boolean" default="false"/>
+		</xsd:complexType>
+		<xsd:unique name="BusinessTransaction-ID">
+			<xsd:selector xpath="."/>
+			<xsd:field xpath="nameID"/>
+		</xsd:unique>
+	</xsd:element>
+	<xsd:element name="BusinessTransactionActivity">
+		<xsd:annotation>
+			<xsd:documentation>isLegallyBinding is being deprecated</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexType>
+			<xsd:complexContent>
+				<xsd:extension base="BusinessActivity">
+					<xsd:sequence>
+						<xsd:element ref="Documentation" minOccurs="0" maxOccurs="unbounded"/>
+					</xsd:sequence>
+					<xsd:attribute name="businessTransaction" type="xsd:string" use="required"/>
+					<xsd:attribute name="businessTransactionIDREF" type="GUIDREF"/>
+					<xsd:attribute name="isConcurrent" type="xsd:boolean" default="true"/>
+					<xsd:attribute name="isLegallyBinding" type="xsd:boolean" default="true">
+						<xsd:annotation>
+							<xsd:documentation source="BPSS 1.1">Deprecated for v1.1</xsd:documentation>
+						</xsd:annotation>
+					</xsd:attribute>
+					<xsd:attribute name="timeToPerform" type="xsd:duration"/>
+				</xsd:extension>
+			</xsd:complexContent>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="CollaborationActivity">
+		<xsd:complexType>
+			<xsd:complexContent>
+				<xsd:extension base="BusinessActivity">
+					<xsd:sequence>
+						<xsd:element ref="Documentation" minOccurs="0" maxOccurs="unbounded"/>
+					</xsd:sequence>
+					<xsd:attribute name="binaryCollaboration" type="xsd:string" use="required"/>
+					<xsd:attribute name="binaryCollaborationIDREF" type="GUIDREF"/>
+				</xsd:extension>
+			</xsd:complexContent>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="Decision">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element ref="ConditionExpression"/>
+			</xsd:sequence>
+			<xsd:attributeGroup ref="name"/>
+		</xsd:complexType>
+		<xsd:unique name="Decision-ID">
+			<xsd:selector xpath="."/>
+			<xsd:field xpath="nameID"/>
+		</xsd:unique>
+	</xsd:element>
+	<xsd:element name="DocumentEnvelope">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element ref="Documentation" minOccurs="0" maxOccurs="unbounded"/>
+				<xsd:element ref="Attachment" minOccurs="0" maxOccurs="unbounded"/>
+			</xsd:sequence>
+			<xsd:attributeGroup ref="name"/>
+			<xsd:attribute name="businessDocument" type="xsd:string" use="required"/>
+			<xsd:attribute name="businessDocumentIDREF" type="GUIDREF"/>
+			<xsd:attribute name="isPositiveResponse" type="xsd:boolean"/>
+			<xsd:attributeGroup ref="documentSecurity"/>
+		</xsd:complexType>
+		<xsd:unique name="DocumentEnvelope-ID">
+			<xsd:selector xpath="."/>
+			<xsd:field xpath="nameID"/>
+		</xsd:unique>
+	</xsd:element>
+	<xsd:element name="Documentation">
+		<xsd:complexType>
+			<xsd:simpleContent>
+				<xsd:extension base="xsd:string">
+					<xsd:attribute name="uri" type="xsd:anyURI"/>
+				</xsd:extension>
+			</xsd:simpleContent>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="Failure">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element ref="Documentation" minOccurs="0" maxOccurs="unbounded"/>
+				<xsd:element ref="ConditionExpression" minOccurs="0"/>
+			</xsd:sequence>
+			<xsd:attributeGroup ref="name"/>
+			<xsd:attribute name="fromBusinessState" type="xsd:string" use="required"/>
+			<xsd:attribute name="fromBusinessStateIDREF" type="GUIDREF"/>
+			<xsd:attribute name="conditionGuard">
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:NMTOKEN">
+						<xsd:enumeration value="ProtocolSuccess"/>
+						<xsd:enumeration value="AnyProtocolFailure"/>
+						<xsd:enumeration value="RequestReceiptFailure"/>
+						<xsd:enumeration value="RequestAcceptanceFailure"/>
+						<xsd:enumeration value="ResponseReceiptFailure"/>
+						<xsd:enumeration value="ResponseAcceptanceFailure"/>
+						<xsd:enumeration value="SignalTimeout"/>
+						<xsd:enumeration value="ResponseTimeout"/>
+						<xsd:enumeration value="BusinessSuccess"/>
+						<xsd:enumeration value="BusinessFailure"/>
+						<xsd:enumeration value="Success"/>
+						<xsd:enumeration value="Failure"/>
+					</xsd:restriction>
+				</xsd:simpleType>
+			</xsd:attribute>
+		</xsd:complexType>
+		<xsd:unique name="Failure-ID">
+			<xsd:selector xpath="."/>
+			<xsd:field xpath="nameID"/>
+		</xsd:unique>
+	</xsd:element>
+	<xsd:element name="Fork">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element ref="Documentation" minOccurs="0" maxOccurs="unbounded"/>
+			</xsd:sequence>
+			<xsd:attributeGroup ref="name"/>
+			<xsd:attribute name="type" use="optional" default="OR">
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:NMTOKEN">
+						<xsd:enumeration value="OR"/>
+						<xsd:enumeration value="XOR"/>
+					</xsd:restriction>
+				</xsd:simpleType>
+			</xsd:attribute>
+			<xsd:attribute name="timeToPerform" type="xsd:duration" use="optional"/>
+		</xsd:complexType>
+		<xsd:unique name="Fork-ID">
+			<xsd:selector xpath="."/>
+			<xsd:field xpath="nameID"/>
+		</xsd:unique>
+	</xsd:element>
+	<xsd:element name="Include">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element ref="Documentation" minOccurs="0" maxOccurs="unbounded"/>
+			</xsd:sequence>
+			<xsd:attributeGroup ref="name"/>
+			<xsd:attribute name="uri" type="xsd:anyURI" use="required"/>
+			<xsd:attribute name="version" type="xsd:string" use="required"/>
+		</xsd:complexType>
+		<xsd:unique name="Include-ID">
+			<xsd:selector xpath="."/>
+			<xsd:field xpath="nameID"/>
+		</xsd:unique>
+	</xsd:element>
+	<xsd:element name="Join">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element ref="Documentation" minOccurs="0" maxOccurs="unbounded"/>
+			</xsd:sequence>
+			<xsd:attributeGroup ref="name"/>
+			<xsd:attribute name="waitForAll" type="xsd:boolean" default="true"/>
+		</xsd:complexType>
+		<xsd:unique name="Join-ID">
+			<xsd:selector xpath="."/>
+			<xsd:field xpath="nameID"/>
+		</xsd:unique>
+	</xsd:element>
+	<xsd:element name="MultiPartyCollaboration">
+		<xsd:annotation>
+			<xsd:documentation source="BPSS 1.1">Deprecated for v1.1</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element ref="Documentation" minOccurs="0" maxOccurs="unbounded"/>
+				<xsd:element ref="BusinessPartnerRole" minOccurs="0" maxOccurs="unbounded"/>
+			</xsd:sequence>
+			<xsd:attributeGroup ref="name"/>
+		</xsd:complexType>
+		<xsd:unique name="MultiPartyCollaboration-ID">
+			<xsd:selector xpath="."/>
+			<xsd:field xpath="nameID"/>
+		</xsd:unique>
+	</xsd:element>
+	<xsd:element name="Namespaces">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element ref="Namespace" maxOccurs="unbounded"/>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="Package">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element ref="Documentation" minOccurs="0" maxOccurs="unbounded"/>
+				<xsd:element ref="Include" minOccurs="0" maxOccurs="unbounded"/>
+				<xsd:element ref="SubstitutionSet" minOccurs="0"/>
+				<xsd:element ref="Namespaces" minOccurs="0"/>
+				<xsd:choice minOccurs="0" maxOccurs="unbounded">
+					<xsd:element ref="Package" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="BusinessDocument" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="BusinessTransaction" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="BinaryCollaboration" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="MultiPartyCollaboration" minOccurs="0" maxOccurs="unbounded"/>
+				</xsd:choice>
+			</xsd:sequence>
+			<xsd:attributeGroup ref="name"/>
+		</xsd:complexType>
+		<xsd:unique name="Package-ID">
+			<xsd:selector xpath="."/>
+			<xsd:field xpath="nameID"/>
+		</xsd:unique>
+	</xsd:element>
+	<xsd:element name="Performs">
+		<xsd:annotation>
+			<xsd:documentation source="BPSS 1.1">Deprecated for v1.1</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element ref="Documentation" minOccurs="0" maxOccurs="unbounded"/>
+			</xsd:sequence>
+			<xsd:attributeGroup ref="name"/>
+			<xsd:attribute name="role" type="xsd:string" use="required"/>
+			<xsd:attribute name="roleIDREF" type="GUIDREF" use="required"/>
+		</xsd:complexType>
+		<xsd:unique name="Performs-ID">
+			<xsd:selector xpath="."/>
+			<xsd:field xpath="nameID"/>
+		</xsd:unique>
+	</xsd:element>
+	<xsd:element name="ProcessSpecification">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element ref="Documentation" minOccurs="0" maxOccurs="unbounded"/>
+				<xsd:element ref="Include" minOccurs="0" maxOccurs="unbounded"/>
+				<xsd:element ref="SubstitutionSet" minOccurs="0"/>
+				<xsd:element ref="Namespaces" minOccurs="0"/>
+				<xsd:choice minOccurs="0" maxOccurs="unbounded">
+					<xsd:element ref="Package" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="BusinessDocument" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="BusinessTransaction" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="BinaryCollaboration" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="MultiPartyCollaboration" minOccurs="0" maxOccurs="unbounded"/>
+				</xsd:choice>
+			</xsd:sequence>
+			<xsd:attributeGroup ref="name"/>
+			<xsd:attribute name="version" type="xsd:string" use="required"/>
+		</xsd:complexType>
+		<xsd:unique name="ProcessSpecification-ID">
+			<xsd:selector xpath="."/>
+			<xsd:field xpath="nameID"/>
+		</xsd:unique>
+	</xsd:element>
+	<xsd:element name="RequestingBusinessActivity">
+		<xsd:complexType>
+			<xsd:complexContent>
+				<xsd:extension base="BusinessAction">
+					<xsd:sequence>
+						<xsd:element ref="DocumentEnvelope"/>
+					</xsd:sequence>
+					<xsd:attribute name="retryCount" type="xsd:int"/>
+				</xsd:extension>
+			</xsd:complexContent>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="RespondingBusinessActivity">
+		<xsd:complexType>
+			<xsd:complexContent>
+				<xsd:extension base="BusinessAction">
+					<xsd:sequence>
+						<xsd:element ref="DocumentEnvelope" minOccurs="0" maxOccurs="unbounded"/>
+					</xsd:sequence>
+				</xsd:extension>
+			</xsd:complexContent>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="Start">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element ref="Documentation" minOccurs="0" maxOccurs="unbounded"/>
+			</xsd:sequence>
+			<xsd:attribute name="toBusinessState" type="xsd:string" use="required"/>
+			<xsd:attribute name="toBusinessStateIDREF" type="GUIDREF"/>
+			<xsd:attributeGroup ref="name"/>
+		</xsd:complexType>
+		<xsd:unique name="Start-ID">
+			<xsd:selector xpath="."/>
+			<xsd:field xpath="nameID"/>
+		</xsd:unique>
+	</xsd:element>
+	<xsd:element name="Success">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element ref="Documentation" minOccurs="0" maxOccurs="unbounded"/>
+				<xsd:element ref="ConditionExpression" minOccurs="0"/>
+			</xsd:sequence>
+			<xsd:attributeGroup ref="name"/>
+			<xsd:attribute name="fromBusinessState" type="xsd:string" use="required"/>
+			<xsd:attribute name="fromBusinessStateIDREF" type="GUIDREF"/>
+			<xsd:attribute name="conditionGuard">
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:NMTOKEN">
+						<xsd:enumeration value="ProtocolSuccess"/>
+						<xsd:enumeration value="AnyProtocolFailure"/>
+						<xsd:enumeration value="RequestReceiptFailure"/>
+						<xsd:enumeration value="RequestAcceptanceFailure"/>
+						<xsd:enumeration value="ResponseReceiptFailure"/>
+						<xsd:enumeration value="ResponseAcceptanceFailure"/>
+						<xsd:enumeration value="SignalTimeout"/>
+						<xsd:enumeration value="ResponseTimeout"/>
+						<xsd:enumeration value="BusinessSuccess"/>
+						<xsd:enumeration value="BusinessFailure"/>
+						<xsd:enumeration value="Success"/>
+						<xsd:enumeration value="Failure"/>
+					</xsd:restriction>
+				</xsd:simpleType>
+			</xsd:attribute>
+		</xsd:complexType>
+		<xsd:unique name="Success-ID">
+			<xsd:selector xpath="."/>
+			<xsd:field xpath="nameID"/>
+		</xsd:unique>
+	</xsd:element>
+	<xsd:element name="Transition">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element ref="Documentation" minOccurs="0" maxOccurs="unbounded"/>
+				<xsd:element ref="ConditionExpression" minOccurs="0"/>
+			</xsd:sequence>
+			<xsd:attributeGroup ref="name"/>
+			<xsd:attribute name="onInitiation" type="xsd:boolean" default="false"/>
+			<xsd:attribute name="fromBusinessState" type="xsd:string" use="required"/>
+			<xsd:attribute name="fromBusinessStateIDREF" type="GUIDREF" use="optional"/>
+			<xsd:attribute name="toBusinessState" type="xsd:string" use="required"/>
+			<xsd:attribute name="toBusinessStateIDREF" type="GUIDREF" use="optional"/>
+			<xsd:attribute name="conditionGuard">
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:NMTOKEN">
+						<xsd:enumeration value="ProtocolSuccess"/>
+						<xsd:enumeration value="AnyProtocolFailure"/>
+						<xsd:enumeration value="RequestReceiptFailure"/>
+						<xsd:enumeration value="RequestAcceptanceFailure"/>
+						<xsd:enumeration value="ResponseReceiptFailure"/>
+						<xsd:enumeration value="ResponseAcceptanceFailure"/>
+						<xsd:enumeration value="SignalTimeout"/>
+						<xsd:enumeration value="ResponseTimeout"/>
+						<xsd:enumeration value="BusinessSuccess"/>
+						<xsd:enumeration value="BusinessFailure"/>
+						<xsd:enumeration value="Success"/>
+						<xsd:enumeration value="Failure"/>
+					</xsd:restriction>
+				</xsd:simpleType>
+			</xsd:attribute>
+		</xsd:complexType>
+		<xsd:unique name="Transition-ID">
+			<xsd:selector xpath="."/>
+			<xsd:field xpath="nameID"/>
+		</xsd:unique>
+	</xsd:element>
+	<xsd:complexType name="RoleType">
+		<xsd:sequence>
+			<xsd:element ref="Documentation" minOccurs="0"/>
+		</xsd:sequence>
+		<xsd:attributeGroup ref="name"/>
+	</xsd:complexType>
+	<xsd:attributeGroup name="documentSecurity">
+		<xsd:attribute name="isAuthenticated">
+			<xsd:simpleType>
+				<xsd:restriction base="xsd:NMTOKEN">
+					<xsd:enumeration value="none"/>
+					<xsd:enumeration value="transient"/>
+					<xsd:enumeration value="persistent"/>
+					<xsd:enumeration value="transient-and-persistent"/>
+				</xsd:restriction>
+			</xsd:simpleType>
+		</xsd:attribute>
+		<xsd:attribute name="isConfidential">
+			<xsd:simpleType>
+				<xsd:restriction base="xsd:NMTOKEN">
+					<xsd:enumeration value="none"/>
+					<xsd:enumeration value="transient"/>
+					<xsd:enumeration value="persistent"/>
+					<xsd:enumeration value="transient-and-persistent"/>
+				</xsd:restriction>
+			</xsd:simpleType>
+		</xsd:attribute>
+		<xsd:attribute name="isTamperDetectable">
+			<xsd:simpleType>
+				<xsd:restriction base="xsd:NMTOKEN">
+					<xsd:enumeration value="none"/>
+					<xsd:enumeration value="transient"/>
+					<xsd:enumeration value="persistent"/>
+					<xsd:enumeration value="transient-and-persistent"/>
+				</xsd:restriction>
+			</xsd:simpleType>
+		</xsd:attribute>
+	</xsd:attributeGroup>
+	<xsd:complexType name="BusinessAction">
+		<xsd:sequence>
+			<xsd:element ref="Documentation" minOccurs="0" maxOccurs="unbounded"/>
+		</xsd:sequence>
+		<xsd:attributeGroup ref="name"/>
+		<xsd:attribute name="isAuthorizationRequired" type="xsd:boolean" default="false">
+			<xsd:annotation>
+				<xsd:documentation>deprecated</xsd:documentation>
+			</xsd:annotation>
+		</xsd:attribute>
+		<xsd:attribute name="isIntelligibleCheckRequired" type="xsd:boolean" default="false"/>
+		<xsd:attribute name="isNonRepudiationRequired" type="xsd:boolean" default="false"/>
+		<xsd:attribute name="isNonRepudiationReceiptRequired" type="xsd:boolean" default="false"/>
+		<xsd:attribute name="timeToAcknowledgeReceipt" type="xsd:duration"/>
+		<xsd:attribute name="timeToAcknowledgeAcceptance" type="xsd:duration"/>
+	</xsd:complexType>
+	<xsd:attributeGroup name="name">
+		<xsd:attribute name="name" type="xsd:string" use="optional"/>
+		<xsd:attribute name="nameID" use="required">
+			<xsd:simpleType>
+				<xsd:restriction base="GUID"/>
+			</xsd:simpleType>
+		</xsd:attribute>
+	</xsd:attributeGroup>
+	<xsd:complexType name="BusinessActivity">
+		<xsd:attributeGroup ref="name"/>
+		<xsd:attribute name="fromRole" type="xsd:string" use="required"/>
+		<xsd:attribute name="fromRoleIDREF" type="GUIDREF"/>
+		<xsd:attribute name="toRole" type="xsd:string" use="required"/>
+		<xsd:attribute name="toRoleIDREF" type="GUIDREF"/>
+		<xsd:attribute name="beginsWhen" type="xsd:string"/>
+		<xsd:attribute name="endsWhen" type="xsd:string"/>
+		<xsd:attribute name="preCondition" type="xsd:string"/>
+		<xsd:attribute name="postCondition" type="xsd:string"/>
+	</xsd:complexType>
+	<xsd:simpleType name="GUID">
+		<xsd:restriction base="xsd:string"/>
+	</xsd:simpleType>
+	<xsd:simpleType name="GUIDREF">
+		<xsd:restriction base="xsd:string"/>
+	</xsd:simpleType>
+	<xsd:element name="Namespace">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:annotation>
+					<xsd:documentation>alternative namespaces</xsd:documentation>
+				</xsd:annotation>
+				<xsd:element ref="Namespace" minOccurs="0" maxOccurs="unbounded"/>
+			</xsd:sequence>
+			<xsd:attribute name="URI" type="xsd:anyURI" use="required"/>
+			<xsd:attribute name="prefix" type="xsd:NMTOKEN" use="required"/>
+			<xsd:attribute name="nameID" type="GUID" use="required"/>
+		</xsd:complexType>
+	</xsd:element>
+</xsd:schema>

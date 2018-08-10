@@ -1,0 +1,29 @@
+<wsdl:definitions
+     name="WriteASNHash"
+     targetNamespace="http://xmlns.oracle.com/pcbpel/adapter/file/ASNtoServiceUser/ASNToServiceUser/WriteASNHash"
+     xmlns:tns="http://xmlns.oracle.com/pcbpel/adapter/file/ASNtoServiceUser/ASNToServiceUser/WriteASNHash"
+     xmlns:jca="http://xmlns.oracle.com/pcbpel/wsdl/jca/"
+     xmlns:plt="http://schemas.xmlsoap.org/ws/2003/05/partner-link/"
+     xmlns:imp1="http://www.thbs.com/ASNToServiceUser/XMLSchema/CompositeVariables"
+     xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+    >
+  <plt:partnerLinkType name="Write_plt" >
+    <plt:role name="Write_role" >
+      <plt:portType name="tns:Write_ptt" />
+    </plt:role>
+  </plt:partnerLinkType>
+    <wsdl:types>
+      <schema targetNamespace="http://xmlns.oracle.com/pcbpel/adapter/file/ASNtoServiceUser/ASNToServiceUser/WriteASNHash"
+              xmlns="http://www.w3.org/2001/XMLSchema" >
+        <import namespace="http://www.thbs.com/ASNToServiceUser/XMLSchema/CompositeVariables" schemaLocation="../Schemas/CompositeVariables.xsd" />
+      </schema>
+    </wsdl:types>
+    <wsdl:message name="Write_msg">
+        <wsdl:part name="body" element="imp1:HashASNFileContent"/>
+    </wsdl:message>
+    <wsdl:portType name="Write_ptt">
+        <wsdl:operation name="Write">
+            <wsdl:input message="tns:Write_msg"/>
+        </wsdl:operation>
+    </wsdl:portType>
+</wsdl:definitions>

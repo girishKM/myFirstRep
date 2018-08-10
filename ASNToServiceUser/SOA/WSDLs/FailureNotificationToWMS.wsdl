@@ -1,0 +1,28 @@
+<wsdl:definitions
+     name="FailureNotificationToWMS"
+     targetNamespace="http://xmlns.oracle.com/pcbpel/adapter/file/ASNtoServiceUser/ASNToServiceUser/FailureNotificationToWMS"
+     xmlns:tns="http://xmlns.oracle.com/pcbpel/adapter/file/ASNtoServiceUser/ASNToServiceUser/FailureNotificationToWMS"
+     xmlns:jca="http://xmlns.oracle.com/pcbpel/wsdl/jca/"
+     xmlns:plt="http://schemas.xmlsoap.org/ws/2003/05/partner-link/"
+     xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+    >
+  <plt:partnerLinkType name="Write_plt" >
+    <plt:role name="Write_role" >
+      <plt:portType name="tns:Write_ptt" />
+    </plt:role>
+  </plt:partnerLinkType>
+    <wsdl:types>
+      <schema targetNamespace="http://xmlns.oracle.com/pcbpel/adapter/file/ASNtoServiceUser/ASNToServiceUser/FailureNotificationToWMS"
+              xmlns="http://www.w3.org/2001/XMLSchema" >
+        <include schemaLocation="../Schemas/0A1FailureNotification/0A1_MS_V02_00_FailureNotification.xsd" />
+      </schema>
+    </wsdl:types>
+    <wsdl:message name="Write_msg">
+        <wsdl:part name="body" element="tns:Pip0A1FailureNotification"/>
+    </wsdl:message>
+    <wsdl:portType name="Write_ptt">
+        <wsdl:operation name="Write">
+            <wsdl:input message="tns:Write_msg"/>
+        </wsdl:operation>
+    </wsdl:portType>
+</wsdl:definitions>

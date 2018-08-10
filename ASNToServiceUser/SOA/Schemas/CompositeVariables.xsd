@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"  targetNamespace='http://www.thbs.com/ASNToServiceUser/XMLSchema/CompositeVariables'>
+    <element name="CompositeVariables">
+    <complexType>
+        <sequence>
+            <element name="FlowID" type="string"/>
+            <element name="CompositeName" type="string"/>
+            <element name="InstanceName" type="string"/>
+            <element name="ASNFileName" type="string"/>
+            <element name="LoggerDatetime" type="dateTime"/>
+            <element name="HashASNFileName" type="string"/>           
+        </sequence>
+    </complexType>
+    </element>
+     <element name="HashASNFileContent" type="string"/>
+</schema>
