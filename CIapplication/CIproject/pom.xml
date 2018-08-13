@@ -41,7 +41,7 @@
         <composite.name>${project.artifactId}</composite.name>
         <composite.revision>${project.version}</composite.revision>
         <composite.partition>default</composite.partition>
-        <serverUrl>http://localhost:7101</serverUrl>
+        <serverUrl>http://172.30.64.76:7101</serverUrl>
         <user>weblogic</user>
         <password>weblogic123</password>
         <overwrite>true</overwrite>
@@ -132,4 +132,29 @@
             </plugin>
         </plugins>
     </build>
+    <pluginRepositories>
+	<pluginRepository>
+		  <id>nexusT</id>
+		  <name>plugin</name>
+		  <url>http://172.30.64.76:8083/nexus/content/groups/public</url>
+		  <releases>
+		   <enabled>true</enabled>
+		  </releases>
+		  <snapshots>
+		   <enabled>true</enabled>
+		  </snapshots>
+	 </pluginRepository>
+	</pluginRepositories>
+    <distributionManagement>
+	    <repository>
+		 <id>nexusT</id>
+		 <name>SAMPLE-REL</name>
+		 <url>http://172.30.64.76:8083/nexus/content/repositories/SAMPLE_REL/</url>
+	    </repository>
+	    <snapshotRepository>
+		 <id>nexusT</id>
+		 <name>SAMPLE-SNAP</name>
+		 <url>http://172.30.64.76:8083/nexus/content/repositories/SAMPLE_SNAP/</url>
+	    </snapshotRepository>
+	</distributionManagement>
 </project>
