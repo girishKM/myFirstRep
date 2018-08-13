@@ -80,7 +80,7 @@
 	<pluginRepository>
 		  <id>nexusT</id>
 		  <name>plugin</name>
-		  <url>http://172.30.64.60:3000/nexus/content/groups/public</url>
+		  <url>http://172.30.64.76:8083/nexus/content/groups/public</url>
 		  <releases>
 		   <enabled>true</enabled>
 		  </releases>
@@ -94,12 +94,12 @@
 	    <repository>
 		 <id>nexusT</id>
 		 <name>SAMPLE-REL</name>
-		 <url>http://172.30.64.60:3000/nexus/content/repositories/SAMPLE_REL/</url>
+		 <url>http://172.30.64.76:8083/nexus/content/repositories/SAMPLE_REL/</url>
 	    </repository>
 	    <snapshotRepository>
 		 <id>nexusT</id>
 		 <name>SAMPLE-SNAP</name>
-		 <url>http://172.30.64.60:3000/nexus/content/repositories/SAMPLE_SNAP/</url>
+		 <url>http://172.30.64.76:8083/nexus/content/repositories/SAMPLE_SNAP/</url>
 	    </snapshotRepository>
 	</distributionManagement>
 
