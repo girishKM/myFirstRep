@@ -59,7 +59,7 @@
 		 <repository>
 			  <id>nexusT</id>
 			  <name>public</name>
-			  <url>http://172.30.64.60:3000/nexus/content/groups/public</url>
+			  <url>http://172.30.64.76:8083/nexus/content/groups/public</url>
 			  <releases>
 			   <enabled>true</enabled>
 			  </releases>
