@@ -160,12 +160,12 @@
 	</pluginRepositories>
     <distributionManagement>
 	    <repository>
-		 <id>nexusT</id>
+		 <id>SAMPLE_REL</id>
 		 <name>SAMPLE-REL</name>
 		 <url>http://172.30.64.76:8083/nexus/content/repositories/SAMPLE_REL/</url>
 	    </repository>
 	    <snapshotRepository>
-		 <id>nexusT</id>
+		 <id>SAMPLE_SNAP</id>
 		 <name>SAMPLE-SNAP</name>
 		 <url>http://172.30.64.76:8083/nexus/content/repositories/SAMPLE_SNAP/</url>
 	    </snapshotRepository>
