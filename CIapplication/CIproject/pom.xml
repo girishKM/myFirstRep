@@ -145,19 +145,7 @@
             </plugin>
         </plugins>
     </build>
-    <pluginRepositories>
-	<pluginRepository>
-		  <id>nexusT</id>
-		  <name>plugin</name>
-		  <url>http://172.30.64.76:8083/nexus/content/groups/public</url>
-		  <releases>
-		   <enabled>true</enabled>
-		  </releases>
-		  <snapshots>
-		   <enabled>true</enabled>
-		  </snapshots>
-	 </pluginRepository>
-	</pluginRepositories>
+    
     <distributionManagement>
 	    <repository>
 		 <id>SAMPLE_REL</id>
