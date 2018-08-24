@@ -5,6 +5,12 @@
     <artifactId>CIapplication</artifactId>
     <version>1.0</version>
     <packaging>pom</packaging>
+     <parent>
+        <groupId>com.oracle.soa</groupId>
+        <artifactId>sar-common</artifactId>
+        <version>12.2.1-3-0</version>
+        <relativePath></relativePath>
+    </parent>
     <modules>
         <!-- Add project modules -->
     	<module>CIproject</module>
