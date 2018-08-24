@@ -22,7 +22,7 @@
         <groupId>com.oracle.soa</groupId>
         <artifactId>sar-common</artifactId>
         <version>12.2.1-3-0</version>
-        <relativePath></relativePath>
+        <relativePath>CIapplication/CIproject/pom.xml</relativePath>
     </parent>
     <properties>
         <!-- these parameters are used by the compile goal -->
@@ -58,21 +58,6 @@
         <oracleHome>/home/oracleuser/Oracle/Middleware/Oracle_Home/</oracleHome>
     </properties>
 
-    <repositories>
-    <repository>
-            <id>internal-repo</id>
-            <name>internal repository</name>
-            <url>/home/oracleuser/.m2/repository/</url>
-            <layout>default</layout>
-            <releases>
-                <enabled>true</enabled>
-            </releases>
-            <snapshots>
-                <enabled>true</enabled>
-            </snapshots>
-        </repository>
-    </repositories>
-    
     <!--
            These refer to the properties defined above.  You should probably not need to make 
            any changes beflow this point - these just point to the properties above.
