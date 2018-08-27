@@ -51,7 +51,7 @@
         <!-- these parameters are used by the test goal -->
         <!-- if you are using the sca-test (test) goal, you need to uncomment the following
              line and point it to your jndi.properties file. -->
-        <!--<jndi.properties.input>${basedir}/jndi.properties</jndi.properties.input>-->
+        <jndi.properties.input>${basedir}/jndi.properties</jndi.properties.input>
         <scatest.result>${scac.output.dir}/testResult</scatest.result>
         <!--  input is the name of the composite to run test suties against -->
         <input>CIproject</input>
