@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="tsA" time="1" tests="1" failures="0" errors="0">
+   <testsuite name="tsA" tests="1" failures="0" errors="0" time="1" timestamp="2018-08-27 18:32:23" hostname="girish_mohan - TH1883.thbs.india.com" id="Test Suites/tsA">
+      <properties>
+         <property name="deviceName" value=""/>
+         <property name="devicePlatform" value=""/>
+         <property name="logFolder" value="C:\\Users\\girish_mohan\\Katalon Studio\\GITKat\\Reports\\tsA\\20180827_183221"/>
+         <property name="logFiles" value="C:\\Users\\girish_mohan\\Katalon Studio\\GITKat\\Reports\\tsA\\20180827_183221\\execution0.log"/>
+         <property name="attachments" value=""/>
+         <property name="hostName" value="girish_mohan - TH1883.thbs.india.com"/>
+         <property name="hostAddress" value="172.30.64.76"/>
+         <property name="os" value="Windows 10 64bit"/>
+         <property name="katalonVersion" value="5.5.0.1"/>
+      </properties>
+      <testcase name="Test Cases/ts1" classname="Test Cases/ts1" status="PASSED">
+         <system-out><![CDATA[2018-08-27 18:32:23 - [TEST_CASE][PASSED] - Test Cases/ts1: Test Cases/ts1
+
+2018-08-27 18:32:24 - [TEST_STEP][PASSED] - Statement - response = com.kms.katalon.core.webservice.keyword.WSBuiltInKeywords.sendRequest(com.kms.katalon.core.testobject.ObjectRepository.findTestObject(Object Repository/12cTest)): Send request successfully
+
+2018-08-27 18:32:24 - [MESSAGE][PASSED] - Send request successfully
+
+2018-08-27 18:32:24 - [TEST_STEP][PASSED] - verifyResponseStatusCode: Verify response status code successfully
+
+2018-08-27 18:32:24 - [MESSAGE][PASSED] - Verify response status code successfully
+
+2018-08-27 18:32:24 - [TEST_STEP][PASSED] - containsString: Check contain string successfully
+
+2018-08-27 18:32:24 - [MESSAGE][PASSED] - Check contain string successfully]]></system-out>
+         <system-err><![CDATA[]]></system-err>
+      </testcase>
+      <system-out><![CDATA[2018-08-27 18:32:23 - [TEST_SUITE][PASSED] - tsA: Test Cases/ts1]]></system-out>
+      <system-err><![CDATA[]]></system-err>
+   </testsuite>
+</testsuites>

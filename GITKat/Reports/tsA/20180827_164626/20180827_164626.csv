@@ -1,0 +1,6 @@
+Suite/Test/Step Name,Browser,Description,Start time,End time,Duration,Status
+tsA,,,2018-08-27 16:46:28,2018-08-27 16:46:29,0.978s,PASSED
+,,,,,,
+Test Cases/ts1,,,2018-08-27 16:46:28,2018-08-27 16:46:29,0.642s,PASSED
+Statement - response = com.kms.katalon.core.webservice.keyword.WSBuiltInKeywords.sendRequest(com.kms.katalon.core.testobject.ObjectRepository.findTestObject(Object Repository/12cTest)),,,2018-08-27 16:46:28,2018-08-27 16:46:29,0.361s,PASSED
+verifyResponseStatusCode,,,2018-08-27 16:46:29,2018-08-27 16:46:29,0.011s,PASSED
