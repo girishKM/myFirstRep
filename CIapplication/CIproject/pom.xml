@@ -22,7 +22,7 @@
         <groupId>com.oracle.soa</groupId>
         <artifactId>sar-common</artifactId>
         <version>12.2.1-3-0</version>
-        <relativePath></relativePath>
+        <relativePath>CIapplication/pom.xml</relativePath>
     </parent>
     <properties>
         <!-- these parameters are used by the compile goal -->
