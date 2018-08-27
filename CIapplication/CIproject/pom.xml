@@ -40,7 +40,7 @@
         <composite.name>${project.artifactId}</composite.name>
         <composite.revision>${project.version}</composite.revision>
         <composite.partition>default</composite.partition>
-        <serverUrl>http://172.30.64.60:7101</serverUrl>
+        <serverUrl>http://172.30.64.37:7101</serverUrl>
         <user>weblogic</user>
         <password>weblogic123</password>
         <overwrite>true</overwrite>
