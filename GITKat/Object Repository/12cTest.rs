@@ -32,5 +32,5 @@ import com.kms.katalon.core.webservice.verification.WSResponseManager
 import groovy.json.JsonSlurper
 import internal.GlobalVariable as GlobalVariable
 </verificationScript>
-   <wsdlAddress>http://172.30.64.60:7101/soa-infra/services/default/CIproject/bpelprocess2_client_ep?WSDL</wsdlAddress>
+   <wsdlAddress>http://172.30.64.37:7101/soa-infra/services/default/CIproject/bpelprocess2_client_ep?WSDL</wsdlAddress>
 </WebServiceRequestEntity>
