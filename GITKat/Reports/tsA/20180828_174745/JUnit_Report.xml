@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="tsA" time="2" tests="1" failures="0" errors="0">
+   <testsuite name="tsA" tests="1" failures="0" errors="0" time="2" timestamp="2018-08-28 17:47:50" hostname="root - localhost" id="Test Suites/tsA">
+      <properties>
+         <property name="deviceName" value=""/>
+         <property name="devicePlatform" value=""/>
+         <property name="logFolder" value="/root/.jenkins/workspace/FinalSOA12CMavenJob/GITKat/Reports/tsA/20180828_174745"/>
+         <property name="logFiles" value="/root/.jenkins/workspace/FinalSOA12CMavenJob/GITKat/Reports/tsA/20180828_174745/execution0.log"/>
+         <property name="attachments" value=""/>
+         <property name="hostName" value="root - localhost"/>
+         <property name="hostAddress" value="127.0.0.1"/>
+         <property name="os" value="Linux 64bit"/>
+         <property name="katalonVersion" value="5.4.2.1"/>
+      </properties>
+      <testcase name="Test Cases/ts1" classname="Test Cases/ts1" status="PASSED">
+         <system-out><![CDATA[2018-08-28 17:47:50 - [TEST_CASE][PASSED] - Test Cases/ts1: Test Cases/ts1
+
+2018-08-28 17:47:51 - [TEST_STEP][PASSED] - Statement - response = com.kms.katalon.core.webservice.keyword.WSBuiltInKeywords.sendRequest(com.kms.katalon.core.testobject.ObjectRepository.findTestObject(Object Repository/12cTest)): Send request successfully
+
+2018-08-28 17:47:51 - [MESSAGE][PASSED] - Send request successfully
+
+2018-08-28 17:47:51 - [TEST_STEP][PASSED] - verifyResponseStatusCode: Verify response status code successfully
+
+2018-08-28 17:47:51 - [MESSAGE][PASSED] - Verify response status code successfully
+
+2018-08-28 17:47:51 - [TEST_STEP][PASSED] - containsString: Check contain string successfully
+
+2018-08-28 17:47:52 - [MESSAGE][PASSED] - Check contain string successfully]]></system-out>
+         <system-err><![CDATA[]]></system-err>
+      </testcase>
+      <system-out><![CDATA[2018-08-28 17:47:50 - [TEST_SUITE][PASSED] - tsA: Test Cases/ts1]]></system-out>
+      <system-err><![CDATA[]]></system-err>
+   </testsuite>
+</testsuites>
