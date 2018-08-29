@@ -7,3 +7,4 @@ installed jenkins
 installed nexus
 insatlled nginx
 installed etc
+installed katalon
