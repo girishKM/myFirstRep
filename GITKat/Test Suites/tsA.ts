@@ -11,10 +11,4 @@
    <pageLoadTimeoutDefault>true</pageLoadTimeoutDefault>
    <rerunFailedTestCasesOnly>false</rerunFailedTestCasesOnly>
    <testSuiteGuid>d5494786-f085-49fc-94df-7a47024274e4</testSuiteGuid>
-   <testCaseLink>
-      <guid>4a107314-8fd5-4345-8469-12a0eab77d38</guid>
-      <isReuseDriver>false</isReuseDriver>
-      <isRun>true</isRun>
-      <testCaseId>Test Cases/ts1</testCaseId>
-   </testCaseLink>
 </TestSuiteEntity>
