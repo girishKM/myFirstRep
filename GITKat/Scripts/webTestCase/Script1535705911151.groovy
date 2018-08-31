@@ -19,10 +19,25 @@ import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUiBuiltInKe
 import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
 import internal.GlobalVariable as GlobalVariable
 
-def response = WS.sendRequest(findTestObject('Object Repository/webReq'))
+WebUI.openBrowser('')
 
-WS.verifyResponseStatusCode(response, 200)
+WebUI.navigateToUrl('http://172.30.64.60:7101/ws_utc/login.do;jsessionid=Z8aPQ9GqpE5JKMJ6BFDVsLhdNzRuwEM8EsnPa3020w5eiMSupf0x!1917344051')
 
-WS.containsString(response, 'Girish', false)
+WebUI.setText(findTestObject('Object Repository/Page_Web Services Test Client/input_j_username'), 'weblogic')
 
+WebUI.setEncryptedText(findTestObject('Object Repository/Page_Web Services Test Client/input_j_password'), 'NZIN1KboZq1GGeycC37Kyg==')
+
+WebUI.click(findTestObject('Object Repository/Page_Web Services Test Client/input_formButton'))
+
+WebUI.click(findTestObject('Object Repository/Page_Web Services Test Client/a_process'))
+
+WebUI.setText(findTestObject('Object Repository/Page_Web Services Test Client/input_mddsdata.payload.input'), 'samsung')
+
+WebUI.setText(findTestObject('Object Repository/Page_Web Services Test Client/input_Basic.userName'), 'weblogic')
+
+WebUI.setEncryptedText(findTestObject('Object Repository/Page_Web Services Test Client/input_Basic.password'), 'NZIN1KboZq1GGeycC37Kyg==')
+
+WebUI.click(findTestObject('Object Repository/Page_Web Services Test Client/input_invokeS'))
+
+WebUI.closeBrowser()
 

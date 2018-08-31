@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="tsA" time="2" tests="0" failures="1" errors="0">
+   <testsuite name="tsA" tests="0" failures="1" errors="0" time="2" timestamp="2018-08-28 12:29:20" hostname="girish_mohan - TH1883.thbs.india.com" id="Test Suites/tsA">
+      <properties>
+         <property name="deviceName" value=""/>
+         <property name="devicePlatform" value=""/>
+         <property name="logFolder" value="C:\\Users\\girish_mohan\\Katalon Studio\\GITKat\\Reports\\tsA\\20180828_122916"/>
+         <property name="logFiles" value="C:\\Users\\girish_mohan\\Katalon Studio\\GITKat\\Reports\\tsA\\20180828_122916\\execution0.log"/>
+         <property name="attachments" value=""/>
+         <property name="hostName" value="girish_mohan - TH1883.thbs.india.com"/>
+         <property name="hostAddress" value="172.30.64.76"/>
+         <property name="os" value="Windows 10 64bit"/>
+         <property name="katalonVersion" value="5.5.0.1"/>
+      </properties>
+      <testcase name="Test Cases/ts1" classname="Test Cases/ts1" status="FAILED">
+         <failure type="FAILED" message="Unable to send request (Root cause: javax.wsdl.WSDLException: WSDLException: faultCode=OTHER_ERROR: Unable to resolve imported document at 'http://172.30.64.60:7101/soa-infra/services/default/CIproject/bpelprocess2_client_ep?WSDL'.: java.net.ConnectException: Connection refused: connect)"/>
+         <system-out><![CDATA[2018-08-28 12:29:20 - [TEST_CASE][FAILED] - Test Cases/ts1: Test Cases/ts1 FAILED because (of) Unable to send request (Root cause: javax.wsdl.WSDLException: WSDLException: faultCode=OTHER_ERROR: Unable to resolve imported document at 'http://172.30.64.60:7101/soa-infra/services/default/CIproject/bpelprocess2_client_ep?WSDL'.: java.net.ConnectException: Connection refused: connect)
+
+2018-08-28 12:29:21 - [TEST_STEP][FAILED] - Statement - response = com.kms.katalon.core.webservice.keyword.WSBuiltInKeywords.sendRequest(com.kms.katalon.core.testobject.ObjectRepository.findTestObject(Object Repository/12cTest)): Unable to send request (Root cause: javax.wsdl.WSDLException: WSDLException: faultCode=OTHER_ERROR: Unable to resolve imported document at 'http://172.30.64.60:7101/soa-infra/services/default/CIproject/bpelprocess2_client_ep?WSDL'.: java.net.ConnectException: Connection refused: connect)
+
+2018-08-28 12:29:22 - [MESSAGE][FAILED] - Unable to send request (Root cause: javax.wsdl.WSDLException: WSDLException: faultCode=OTHER_ERROR: Unable to resolve imported document at 'http://172.30.64.60:7101/soa-infra/services/default/CIproject/bpelprocess2_client_ep?WSDL'.: java.net.ConnectException: Connection refused: connect)]]></system-out>
+         <system-err><![CDATA[2018-08-28 12:29:20 - [TEST_CASE][FAILED] - Test Cases/ts1: Test Cases/ts1 FAILED because (of) Unable to send request (Root cause: javax.wsdl.WSDLException: WSDLException: faultCode=OTHER_ERROR: Unable to resolve imported document at 'http://172.30.64.60:7101/soa-infra/services/default/CIproject/bpelprocess2_client_ep?WSDL'.: java.net.ConnectException: Connection refused: connect)]]></system-err>
+      </testcase>
+      <system-out><![CDATA[2018-08-28 12:29:20 - [TEST_SUITE][FAILED] - tsA: Test Cases/ts1 FAILED because (of) Unable to send request (Root cause: javax.wsdl.WSDLException: WSDLException: faultCode=OTHER_ERROR: Unable to resolve imported document at 'http://172.30.64.60:7101/soa-infra/services/default/CIproject/bpelprocess2_client_ep?WSDL'.: java.net.ConnectException: Connection refused: connect)]]></system-out>
+      <system-err><![CDATA[2018-08-28 12:29:20 - [TEST_SUITE][FAILED] - tsA: Test Cases/ts1 FAILED because (of) Unable to send request (Root cause: javax.wsdl.WSDLException: WSDLException: faultCode=OTHER_ERROR: Unable to resolve imported document at 'http://172.30.64.60:7101/soa-infra/services/default/CIproject/bpelprocess2_client_ep?WSDL'.: java.net.ConnectException: Connection refused: connect)]]></system-err>
+   </testsuite>
+</testsuites>
