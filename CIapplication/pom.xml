@@ -8,5 +8,34 @@
     <modules>
         <!-- Add project modules -->
     	<module>CIproject</module>
+	<module>soaBpel</module>
     </modules>
+<pluginRepositories>
+	
+	<pluginRepository>
+		  <id>nexusT</id>
+		  <name>plugin</name>
+		  <url>http://172.30.64.60:3000/nexus/content/groups/public</url>
+		  <releases>
+		   <enabled>true</enabled>
+		  </releases>
+		  <snapshots>
+		   <enabled>true</enabled>
+		  </snapshots>
+	 </pluginRepository>
+	</pluginRepositories>
+	
+        <distributionManagement>
+                    <repository>
+                         <id>nexusT</id>
+                         <name>SAMPLE-REL</name>
+                         <url>http://172.30.64.60:3000/nexus/content/repositories/SAMPLE_REL/</url>
+                    </repository>
+                    <snapshotRepository>
+                         <id>nexusT</id>
+                         <name>SAMPLE-SNAP</name>
+                         <url>http://172.30.64.60:3000/nexus/content/repositories/SAMPLE_SNAP/</url>
+                    </snapshotRepository>
+        </distributionManagement>
+
 </project>

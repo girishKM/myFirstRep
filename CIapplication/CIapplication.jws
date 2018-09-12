@@ -24,6 +24,7 @@
    </list>
    <list n="listOfChildren">
       <hash><url n="URL" path="CIproject/CIproject.jpr"/></hash>
+      <hash><url n="URL" path="soaBpel/soaBpel.jpr"/></hash>
    </list>
    <hash n="oracle.jdeveloper.maven.compiler.MavenConfiguration">
       <hash n="oracle.jdeveloper.maven.compiler.MavenConfiguration">

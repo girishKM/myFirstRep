@@ -75,7 +75,7 @@
         <to expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">$outputVariable.payload/client:result</to>
       </copy>
       <copy>
-        <from>concat($inputVariable.payload/client:input,"  Plays PUBG")</from>
+        <from>concat($inputVariable.payload/client:input,"  Playing PUBG")</from>
         <to expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">$outputVariable.payload/client:result</to>
       </copy>
     </assign>

@@ -63,20 +63,20 @@
    <list n="contentSets">
       <string v="oracle.mds.internal.dt.ide.MDSLibraryCustCSProvider/mdsContentSet"/>
       <string v="oracle.mds.internal.dt.ide.MDSADFLibVirtualNodeCSProvider/mdsLibVirtualNodeContentSet"/>
+      <string v="oracle.jdeveloper.model.J2eeSettings/webContentSet"/>
       <string v="oracle.jdeveloper.model.PathsConfiguration/javaContentSet"/>
       <string v="oracle.ide.model.ResourcePaths/resourcesContentSet"/>
-      <string v="oracle.jdeveloper.model.J2eeSettings/webContentSet"/>
       <string v="oracle.jdeveloper.offlinedb.model.OfflineDBProjectSettings/offlineDBContentSet"/>
-      <string v="oracle.tip.tools.ide.fabric.addin.SCAContentSetProvider/sca-content"/>
-      <string v="oracle.toplink.workbench.addin/toplinkContentSet"/>
       <string v="oracle.adfdtinternal.model.ide.settings.ADFMSettings/adfmContentSet"/>
-      <string v="oracle.bm.commonIde.data.project.ModelerProjectSettings/modelersContentSet"/>
+      <string v="oracle.tip.tools.ide.fabric.addin.SCAContentSetProvider/sca-content"/>
       <string v="oracle.sb.tooling.ide.core.projects.SbProjectSettings/sbContentSet"/>
       <string v="oracle.tip.tools.ide.ess.addin.ESSContentSetProvider/ess-content"/>
-      <string v="oracle.bpm.fusion.studio.BPMProjectSettings/bpmProjectsProcessesContentSet"/>
+      <string v="oracle.bm.commonIde.data.project.ModelerProjectSettings/modelersContentSet"/>
+      <string v="oracle.toplink.workbench.addin/toplinkContentSet"/>
       <string v="oracle.jdeveloper.model.PathsConfiguration/cepContentSet"/>
+      <string v="oracle.bpm.fusion.studio.BPMProjectSettings/bpmProjectsProcessesContentSet"/>
    </list>
-   <value n="defaultPackage" v=""/>
+   <value n="defaultPackage" v="group.id"/>
    <hash n="oracle.ide.model.TechnologyScopeConfiguration">
       <list n="technologyScope">
          <string v="SOA"/>
@@ -86,6 +86,10 @@
    </hash>
    <hash n="oracle.jdeveloper.compiler.OjcConfiguration">
       <list n="copyRes">
+         <string v=".GIF"/>
+         <string v=".JPEG"/>
+         <string v=".JPG"/>
+         <string v=".PNG"/>
          <string v=".cpx"/>
          <string v=".dcx"/>
          <string v=".ejx"/>
@@ -118,23 +122,15 @@
          <string v=".xml"/>
          <string v=".exm"/>
          <string v=".xml"/>
-         <string v=".exm"/>
-         <string v=".xml"/>
-         <string v=".exm"/>
-         <string v=".xml"/>
-         <string v=".exm"/>
-         <string v=".xml"/>
-         <string v=".exm"/>
-         <string v=".xml"/>
       </list>
       <list n="excludedUrls">
          <string v="fXSLNonDeployedFiles"/>
       </list>
-      <value n="webIANAEncoding" v="windows-1252"/>
+      <value n="webIANAEncoding" v="UTF-8"/>
    </hash>
    <hash n="oracle.jdeveloper.deploy.dt.DeploymentProfiles">
       <hash n="profileDefinitions">
-         <hash n="CIproject">
+         <hash n="soaBpel">
             <hash n="archiveOptions">
                <value n="hasManifest" v="false"/>
             </hash>
@@ -221,21 +217,21 @@
                   </hash>
                </list>
             </hash>
-            <url n="jarURL" path="deploy/sca_CIproject.jar"/>
+            <url n="jarURL" path="deploy/sca_soaBpel.jar"/>
             <value n="profileClass" v="oracle.tip.tools.ide.fabric.deploy.sar.SarProfile"/>
-            <value n="profileName" v="CIproject"/>
+            <value n="profileName" v="soaBpel"/>
          </hash>
       </hash>
       <list n="profileList">
-         <string v="CIproject"/>
+         <string v="soaBpel"/>
       </list>
    </hash>
    <hash n="oracle.jdeveloper.maven.compiler.MavenConfiguration">
       <url n="pomfileURL" path="pom.xml"/>
    </hash>
    <hash n="oracle.jdeveloper.model.J2eeSettings">
-      <value n="j2eeWebAppName" v="CIapplication-CIproject-webapp"/>
-      <value n="j2eeWebContextRoot" v="CIapplication-CIproject-context-root"/>
+      <value n="j2eeWebAppName" v="CIapplication-soaBpel-webapp"/>
+      <value n="j2eeWebContextRoot" v="CIapplication-soaBpel-context-root"/>
    </hash>
    <hash n="oracle.jdeveloper.model.PathsConfiguration">
       <hash n="javaContentSet">
