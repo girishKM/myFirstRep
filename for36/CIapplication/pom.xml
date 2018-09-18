@@ -8,5 +8,6 @@
     <modules>
         <!-- Add project modules -->
     	<module>CIproject</module>
+        <module>soaBpel</module>
     </modules>
 </project>
