@@ -146,7 +146,7 @@
 	<pluginRepository>
 		  <id>nexusT</id>
 		  <name>plugin</name>
-		  <url>http://172.30.64.60:3000/nexus/content/groups/public</url>
+		  <url>http://172.30.64.108:3000/nexus/content/groups/public</url>
 		  <releases>
 		   <enabled>true</enabled>
 		  </releases>
