@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html  xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1" />
+<title th:text="#{app.actress-details}">Show Actress</title>
+<link rel="stylesheet" th:href="@{/styles.css}"/>
+</head>
+<body>
+	 <h1 th:text="#{app.actress-details}">Details</h1>
+    <table>
+        <tr>
+           <th th:text="#{actress.firstName}"></th>
+           <th th:text="#{actress.lastName}"></th>
+           <th th:text="#{actress.industry}"></th>
+           <th th:text="#{actress.ranked}"></th>
+           <th th:text="#{actress.pay}"></th>
+        </tr>
+        <tr th:each="actress : ${allActress}">
+	      <td th:text="${actress.firstName}">First Name</td>
+		  <td th:text="${actress.lastName}">Last Name</td>
+		  <td th:text="${actress.industry}">Industry</td>
+		  <td th:text="${actress.ranked}">Ranked</td>
+		  <td th:text="${actress.pay}">Pay</td>		  		  
+	    </tr>	
+	</table>
+	<a href="#" th:href="@{/stars/addstars}" th:text="#{actress.add-more-actress}">Add Actress</a>
+</body>
+</html>

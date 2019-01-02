@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1" />
+<title th:text="#{app.title}"> Title </title>
+<link rel="stylesheet" th:href="@{/styles.css}"/>
+</head>
+<body>
+<h1 th:text="#{app.create-actress}">Create</h1>
+<form th:action="@{/stars/addstars}" th:object="${actress}" th:method="post" >
+	<table >
+			<tr><td th:text="#{actress.firstName}">First</td>
+				<td>
+					<input type="text" th:field="*{firstName}" />
+					<label th:if="${#fields.hasErrors('firstName')}" th:text="#{error.actress.firstName}" th:class="'error'"> First Name Error</label>
+				</td>
+			</tr>
+			<tr><td th:text="#{actress.lastName}">First</td>
+				<td>
+					<input type="text" th:field="*{lastName}" />
+					<label th:if="${#fields.hasErrors('lastName')}" th:text="#{error.actress.lastName}" th:class="'error'"> Last Name Error</label>
+				</td>
+				</tr>
+				<tr><td th:text="#{actress.industry}">First</td>
+				<td>
+					<input type="text" th:field="*{industry}" />
+					<label th:if="${#fields.hasErrors('industry')}" th:text="#{error.actress.industry}" th:class="'error'"> Industry Error</label>
+				</td>
+				</tr>
+				<tr><td th:text="#{actress.ranked}">First</td>
+				<td>
+					<input type="number" th:field="*{ranked}" />
+				</td>
+				</tr>
+				<tr><td th:text="#{actress.pay}">First</td>
+				<td>
+					<input type="number" th:field="*{pay}" />
+				</td>
+				</tr>
+				<tr><td th:text="#{actress.industry}">First</td>
+				<td>
+					<select th:field="*{industry}">
+					 	<option th:each="wood : ${industries}" th:value="${wood}" th:text="${wood}"></option>
+					</select>
+					
+				</td>
+				</tr>
+				<tr><td colspan="2">
+		              <input type="submit" th:value="#{actress.form.submit}"/> 
+		              <input type="reset" th:value="#{actress.form.reset}"/>
+		            </td>
+		        </tr>
+	</table>
+
+
+
+</form>
+</body>
+</html>
